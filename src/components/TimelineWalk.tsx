@@ -4,11 +4,15 @@
 // settles to idle at each stop, where a TextSlam label slams in. A dotted
 // timeline runs along the ground with a dot per stop that fills when reached.
 //   stops={[{ label: "JAMESTOWN", node: <Street/> }, …]} arrivals={[60, 250, …]}
+//
+// `renderFigure` replaces the silhouette with anything (e.g. a PhotoCutout).
+// It gets the move state so it can slide/bob between stops, and is drawn
+// BEHIND the opaque ground band, so a waist-up photo can rise from behind it.
 import React from "react";
 import { AbsoluteFill, Easing, interpolate, useCurrentFrame } from "remotion";
 import { Person } from "./Person";
 import { TextSlam } from "./TextSlam";
-import { alpha } from "../lib/color";
+import { alpha, mix } from "../lib/color";
 import { ThemableProps, useTheme } from "../lib/theme-context";
 
 export type TimelineStop = {
@@ -18,6 +22,15 @@ export type TimelineStop = {
   labelColor?: string;
   /** Solid plate behind the label. */
   labelPlate?: string;
+};
+
+export type FigureState = {
+  /** 0 → 1 → 0 bump while the camera moves between stops (0 when parked). */
+  move: number;
+  /** True while moving between stops (or walking in). */
+  walking: boolean;
+  /** Index of the stop most recently reached (-1 before the first). */
+  stop: number;
 };
 
 export type TimelineWalkProps = ThemableProps & {
@@ -43,6 +56,10 @@ export type TimelineWalkProps = ThemableProps & {
   labelSize?: number;
   /** Frame the last label exits (others exit when walking resumes). */
   exitAt?: number;
+  /** Custom figure, drawn behind the ground band (replaces the silhouette). */
+  renderFigure?: (state: FigureState) => React.ReactNode;
+  /** Solid colour of the ground band below groundY. */
+  groundColor?: string;
 };
 
 export const TimelineWalk: React.FC<TimelineWalkProps> = ({
@@ -61,6 +78,8 @@ export const TimelineWalk: React.FC<TimelineWalkProps> = ({
   labelY = 260,
   labelSize = 120,
   exitAt,
+  renderFigure,
+  groundColor,
   ...themable
 }) => {
   const frame = useCurrentFrame();
@@ -70,6 +89,7 @@ export const TimelineWalk: React.FC<TimelineWalkProps> = ({
   // Camera position (world px) and whether we're walking.
   let cam = 0;
   let walking = false;
+  let move = 0;
   let figureEnter = 0; // extra screen offset while walking in at the start
   const a0 = arrivals[0];
   if (frame < a0) {
@@ -82,11 +102,15 @@ export const TimelineWalk: React.FC<TimelineWalkProps> = ({
     if (frame >= s) {
       const p = interpolate(frame, [s, arrivals[i]], [0, 1], { extrapolateLeft: "clamp", extrapolateRight: "clamp", easing: ease });
       cam = (i - 1 + p) * spacing;
-      if (p < 1) walking = true;
+      if (p < 1) {
+        walking = true;
+        move = Math.sin(p * Math.PI);
+      }
     }
   }
 
   const figW = (figureHeight * 320) / 430;
+  const stopIdx = arrivals.filter((a) => frame >= a).length - 1;
   const stopCx = 540;
 
   return (
@@ -101,8 +125,9 @@ export const TimelineWalk: React.FC<TimelineWalkProps> = ({
           </div>
         );
       })}
-      {/* Ground + timeline */}
-      <div style={{ position: "absolute", left: 0, right: 0, top: groundY, height: 1920 - groundY, background: alpha(colors.ink, 0.55) }} />
+      {renderFigure ? renderFigure({ move, walking, stop: stopIdx }) : null}
+      {/* Ground (opaque, so anything behind it is hidden) + timeline */}
+      <div style={{ position: "absolute", left: 0, right: 0, top: groundY, height: 1920 - groundY, background: groundColor ?? mix(colors.navy, colors.ink, 0.6) }} />
       <svg width={1080} height={80} style={{ position: "absolute", left: 0, top: groundY + 30 }}>
         <line x1={-40} x2={1120} y1={20} y2={20} stroke={alpha(colors.cream, 0.35)} strokeWidth={6} strokeDasharray="2 22" strokeLinecap="round" strokeDashoffset={cam} />
         {stops.map((_, i) => {
@@ -116,8 +141,8 @@ export const TimelineWalk: React.FC<TimelineWalkProps> = ({
           );
         })}
       </svg>
-      {/* The figure: always a silhouette, from behind */}
-      <Person
+      {/* Default figure: always a silhouette, from behind */}
+      {renderFigure ? null : <Person
         x={figureX - figW / 2 + figureEnter}
         y={groundY + 12}
         height={figureHeight}
@@ -126,7 +151,7 @@ export const TimelineWalk: React.FC<TimelineWalkProps> = ({
         rimLight={rimLight ?? alpha(colors.gold, 0.9)}
         walk={walking ? stride : 0}
         hair="fade"
-      />
+      />}
       {/* Labels */}
       {stops.map((st, i) => {
         const next = arrivals[i + 1] !== undefined ? arrivals[i + 1] - walkFrames : exitAt;

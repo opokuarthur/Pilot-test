@@ -1,5 +1,7 @@
 // Scene art for the TimelineWalk stops in Scene 2. Each draws into an
 // 880×760 box (bottom = ground). All generic: no real brands, logos or people.
+// Key elements sit in the left ~half / upper part of each box: the right-hand
+// lower area is where the RNAQ photo rises from behind the ground, looking left.
 import React from "react";
 import { random, useCurrentFrame } from "remotion";
 import { alpha, shade, tint } from "../lib/color";
@@ -33,7 +35,7 @@ export const JamestownStreet: React.FC = () => {
         <path key={k} d={`M${-120 + ((frame * 1.2 + k * 60) % 120)} ${452 + k * 26} q30 -10 60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0 t60 0`} stroke={alpha(colors.cream, 0.25)} strokeWidth={4} fill="none" />
       ))}
       {/* Lighthouse */}
-      <g transform="translate(720 0)">
+      <g transform="translate(430 0)">
         <path d="M-34 470 L-22 150 H22 L34 470 Z" fill={colors.cream} />
         {[190, 270, 350, 430].map((y) => (
           <path key={y} d={`M${-22 - (y - 150) * 0.0375} ${y} H${22 + (y - 150) * 0.0375} L${22 + (y + 40 - 150) * 0.0375} ${y + 40} H${-22 - (y + 40 - 150) * 0.0375} Z`} fill={colors.red} />
@@ -60,7 +62,7 @@ export const JamestownStreet: React.FC = () => {
         <rect key={x} x={x} y={574 + (i === 1 ? 6 : 0)} width={30} height={40} fill={[colors.red, colors.gold, colors.cream][i]} />
       ))}
       {/* Painted fishing canoe with flags */}
-      <g transform="translate(470 700)">
+      <g transform="translate(330 704) scale(0.82)">
         <path d="M-200 0 Q0 60 200 0 L170 40 Q0 80 -170 40 Z" fill="#2F7D5B" />
         <path d="M-185 12 Q0 66 185 12" stroke={colors.gold} strokeWidth={8} fill="none" />
         <path d="M-175 26 Q0 76 175 26" stroke={colors.red} strokeWidth={6} fill="none" />
@@ -128,15 +130,15 @@ export const KitchenSink: React.FC = () => {
       <g>
         {Array.from({ length: 9 }, (_, k) => (
           <g key={k}>
-            <rect x={640} y={488 - k * 15} width={180} height={14} rx={7} fill={shade(colors.cream, 0.05 + (k % 2) * 0.05)} />
-            <rect x={650} y={490 - k * 15} width={160} height={2.5} fill="#3E6FB0" />
-            {k % 3 === 0 ? <ellipse cx={700 + k * 9} cy={494 - k * 15} rx={10} ry={3} fill="#7A4A26" /> : null}
+            <rect x={24} y={488 - k * 15} width={180} height={14} rx={7} fill={shade(colors.cream, 0.05 + (k % 2) * 0.05)} />
+            <rect x={34} y={490 - k * 15} width={160} height={2.5} fill="#3E6FB0" />
+            {k % 3 === 0 ? <ellipse cx={84 + k * 9} cy={494 - k * 15} rx={10} ry={3} fill="#7A4A26" /> : null}
           </g>
         ))}
       </g>
       {/* Sponge */}
-      <rect x={200} y={474} width={46} height={26} rx={6} fill={colors.gold} />
-      <rect x={200} y={474} width={46} height={9} rx={4} fill={colors.up} />
+      <rect x={214} y={474} width={46} height={26} rx={6} fill={colors.gold} />
+      <rect x={214} y={474} width={46} height={9} rx={4} fill={colors.up} />
       {/* Steam */}
       {Array.from({ length: 7 }, (_, k) => {
         const ph = ((frame + k * 15) % 105) / 105;
@@ -157,23 +159,22 @@ export const CashStacks: React.FC = () => {
     <g key={key}>
       {Array.from({ length: n }, (_, k) => (
         <g key={k} transform={`translate(${x + (random(`${key}${k}`) - 0.5) * 8} ${740 - k * 26})`}>
-          <rect x={0} y={-24} width={170} height={24} rx={3} fill={k % 2 ? note : shade(note, 0.1)} />
-          <rect x={6} y={-20} width={158} height={16} rx={2} fill="none" stroke={tint(note, 0.35)} strokeWidth={2} />
-          <rect x={72} y={-24} width={26} height={24} fill={colors.cream} opacity={0.85} />
+          <rect x={0} y={-24} width={140} height={24} rx={3} fill={k % 2 ? note : shade(note, 0.1)} />
+          <rect x={6} y={-20} width={128} height={16} rx={2} fill="none" stroke={tint(note, 0.35)} strokeWidth={2} />
+          <rect x={57} y={-24} width={26} height={24} fill={colors.cream} opacity={0.85} />
         </g>
       ))}
     </g>
   );
   return (
     <Svg>
-      <ellipse cx={440} cy={748} rx={420} ry={24} fill="#000" opacity={0.25} />
-      {stack(80, 11, "a")}
-      {stack(270, 17, "b")}
-      {stack(460, 22, "c")}
-      {stack(650, 14, "d")}
+      <ellipse cx={240} cy={748} rx={240} ry={22} fill="#000" opacity={0.25} />
+      {stack(14, 14, "a")}
+      {stack(164, 22, "b")}
+      {stack(314, 17, "c")}
       {/* Coins */}
-      {Array.from({ length: 7 }, (_, k) => (
-        <g key={k} transform={`translate(${120 + k * 100} ${742 - (k % 2) * 6})`}>
+      {Array.from({ length: 5 }, (_, k) => (
+        <g key={k} transform={`translate(${40 + k * 92} ${742 - (k % 2) * 6})`}>
           <ellipse cx={0} cy={0} rx={30} ry={11} fill={shade(colors.gold, 0.3)} />
           <ellipse cx={0} cy={-6} rx={30} ry={11} fill={colors.gold} />
         </g>
@@ -200,7 +201,7 @@ export const CarAndJet: React.FC<{ confettiAt?: number }> = ({ confettiAt = 0 })
       {/* Tarmac line */}
       <rect x={-100} y={600} width={1080} height={8} fill={alpha(colors.cream, 0.2)} />
       {/* Jet */}
-      <g transform="translate(470 330)">
+      <g transform="translate(420 300) scale(0.92)">
         <path d="M-330 40 Q-340 0 -280 -10 L240 -20 Q330 -10 360 30 Q330 60 240 62 L-280 70 Q-330 66 -330 40 Z" fill={colors.cream} />
         <path d="M-300 -6 L-360 -110 L-310 -110 L-220 -10 Z" fill={tint(colors.cream, 0.1)} />
         <path d="M-60 40 L-200 170 L-150 170 L40 44 Z" fill={shade(colors.cream, 0.12)} />
@@ -210,17 +211,12 @@ export const CarAndJet: React.FC<{ confettiAt?: number }> = ({ confettiAt = 0 })
         ))}
         <path d="M290 0 Q320 6 336 24 L296 24 Z" fill={shade(body, 0.3)} />
         <rect x={-246} y={-10} width={56} height={30} rx={14} fill={tint(colors.grey, 0.3)} />
-        {/* Stairs */}
-        <path d="M150 62 L190 62 L250 270 L210 270 Z" fill={tint(colors.grey, 0.2)} />
-        {[0, 1, 2, 3, 4].map((k) => (
-          <line key={k} x1={160 + k * 18} y1={100 + k * 36} x2={200 + k * 18} y2={100 + k * 36} stroke={shade(colors.grey, 0.3)} strokeWidth={4} />
-        ))}
         {/* Landing gear */}
         <rect x={-200} y={66} width={8} height={196} fill={shade(colors.grey, 0.4)} />
         <circle cx={-196} cy={266} r={14} fill={colors.ink} />
       </g>
       {/* Hypercar (no badges) */}
-      <g transform="translate(470 680)">
+      <g transform="translate(250 690) scale(0.72)">
         <ellipse cx={0} cy={66} rx={330} ry={16} fill="#000" opacity={0.35} />
         <path d="M-320 40 Q-330 0 -250 -16 Q-160 -80 -40 -84 Q80 -86 180 -30 Q300 -20 322 10 Q330 40 300 52 L-300 56 Z" fill={body} />
         <path d="M-120 -30 Q-80 -70 -10 -72 Q70 -70 120 -30 Z" fill={colors.ink} />
