@@ -8,6 +8,11 @@
 //
 // Expression and pose accept a fixed value OR keyframes, and blend smoothly:
 //   expression={[{ at: 0, value: "happy" }, { at: 90, value: "worried" }]}
+//
+// Faceless options (for real people who must never be shown with a face):
+//   view="back"        seen from behind: no face, hair covers the back of the head
+//   silhouette="#0B1326"  the whole figure becomes one solid colour (+ optional rimLight)
+//   walk={24}          walk cycle with a stride every 24 frames (legs + arm swing + bob)
 import React from "react";
 import { useCurrentFrame } from "remotion";
 import { Animatable, lerp, lerpObj, resolveKeyframes } from "../lib/keyframes";
@@ -56,6 +61,14 @@ export type PersonFigureProps = ThemableProps & {
   blendFrames?: number;
   /** Mirror horizontally. */
   flip?: boolean;
+  /** "back" = seen from behind (no face drawn). */
+  view?: "front" | "back";
+  /** Solid fill colour for the whole figure (a silhouette). */
+  silhouette?: string;
+  /** Glowing outline around a silhouette (backlight). */
+  rimLight?: string;
+  /** Stride period in frames for a walk cycle (0 = standing). */
+  walk?: number;
 };
 
 // ---- Expression + pose tables ------------------------------------------------
@@ -181,6 +194,10 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
   energy = 0,
   blendFrames = 8,
   flip = false,
+  view = "front",
+  silhouette,
+  rimLight,
+  walk = 0,
   ...themable
 }) => {
   const frame = useCurrentFrame();
@@ -215,8 +232,15 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
   const blink = bp < 6 ? Math.abs(bp - 3) / 3 : 1;
   const sway = Math.sin((t / 60) * Math.PI * 2) * 4 * (1 + energy);
 
-  const L = solveElbow(SHOULDER_L, p.lx - sway * 0.3, p.ly + breathe, -1);
-  const R = solveElbow(SHOULDER_R, p.rx + sway * 0.3, p.ry + breathe, 1);
+  // Walk cycle: legs swing from the hips, arms counter-swing, body bobs.
+  const stride = walk > 0 ? Math.sin((t / walk) * Math.PI * 2) : 0;
+  const legSwing = stride * 24;
+  const armSwing = stride * 22;
+  const walkBob = walk > 0 ? -Math.abs(Math.cos((t / walk) * Math.PI * 2)) * 7 : 0;
+
+  const L = solveElbow(SHOULDER_L, p.lx - sway * 0.3 + armSwing, p.ly + breathe, -1);
+  const R = solveElbow(SHOULDER_R, p.rx + sway * 0.3 - armSwing, p.ry + breathe, 1);
+  const back = view === "back";
 
   const longSleeves = outfit === "shirtTie";
   const sleeveColor = cloth;
@@ -253,8 +277,26 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
   const screen = phoneScreenColor ?? colors.gold;
 
   return (
-    <g transform={`translate(0 ${-hop}) ${flip ? "translate(200 0) scale(-1 1)" : ""}`} filter={fail > 0 ? `url(#sat${uid})` : undefined}>
+    <g transform={`translate(0 ${-hop + walkBob}) ${flip ? "translate(200 0) scale(-1 1)" : ""}`}>
       <defs>
+        {silhouette ? (
+          <filter id={`sil${uid}`} x="-20%" y="-20%" width="140%" height="140%">
+            <feFlood floodColor={silhouette} result="fill" />
+            <feComposite in="fill" in2="SourceAlpha" operator="in" result="solid" />
+            {rimLight ? (
+              <>
+                <feMorphology in="SourceAlpha" operator="dilate" radius={4} result="grow" />
+                <feGaussianBlur in="grow" stdDeviation={3} result="soft" />
+                <feFlood floodColor={rimLight} result="rimc" />
+                <feComposite in="rimc" in2="soft" operator="in" result="rim" />
+                <feMerge>
+                  <feMergeNode in="rim" />
+                  <feMergeNode in="solid" />
+                </feMerge>
+              </>
+            ) : null}
+          </filter>
+        ) : null}
         <filter id={`sat${uid}`}>
           <feColorMatrix type="saturate" values={String(1 - fail)} />
           <feComponentTransfer>
@@ -285,13 +327,19 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
       </defs>
 
       {/* Ground shadow */}
-      <ellipse cx={100} cy={400 + hop} rx={62 - hop} ry={9} fill="#000" opacity={0.18} />
+      <ellipse cx={100} cy={400 + hop - walkBob} rx={62 - hop} ry={9} fill="#000" opacity={0.18} />
 
-      {/* Legs + shoes */}
-      <rect x={66} y={286} width={30} height={108} rx={14} fill={outfit === "dress" ? skinShade : bottomColor} />
-      <rect x={104} y={286} width={30} height={108} rx={14} fill={outfit === "dress" ? skinShade : bottomColor} />
-      <ellipse cx={78} cy={396} rx={20} ry={9} fill="#141414" />
-      <ellipse cx={122} cy={396} rx={20} ry={9} fill="#141414" />
+      <g filter={silhouette ? `url(#sil${uid})` : fail > 0 ? `url(#sat${uid})` : undefined}>
+      {/* Legs + shoes (swing from the hips when walking) */}
+      {[
+        { x: 66, hip: 81, a: legSwing },
+        { x: 104, hip: 119, a: -legSwing },
+      ].map((leg) => (
+        <g key={leg.x} transform={`rotate(${leg.a} ${leg.hip} 296)`}>
+          <rect x={leg.x} y={286} width={30} height={108} rx={14} fill={outfit === "dress" ? skinShade : bottomColor} />
+          <ellipse cx={leg.x + 12} cy={396} rx={20} ry={9} fill="#141414" />
+        </g>
+      ))}
 
       {/* Backpack (behind the torso) */}
       {accessories.includes("backpack") ? (
@@ -306,7 +354,7 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
           <rect x={128} y={160} width={60} height={240} fill="#000" opacity={0.12} />
           {outfit === "dress" ? <rect x={30} y={250} width={150} height={12} fill={accent} /> : null}
         </g>
-        {outfit === "shirtTie" ? (
+        {outfit === "shirtTie" && !back ? (
           <g>
             <path d="M84,168 L100,186 L116,168 L112,164 L100,176 L88,164 Z" fill={tint(cloth, 0.6)} />
             <path d="M100,180 L108,190 L104,252 L100,262 L96,252 L92,190 Z" fill={accent} />
@@ -323,7 +371,7 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
 
       {/* Neck */}
       <rect x={88} y={128} width={24} height={46} rx={10} fill={skinShade} />
-      {outfit === "tshirt" ? <path d="M84,168 Q100,184 116,168" stroke={shade(cloth, 0.25)} strokeWidth={5} fill="none" /> : null}
+      {outfit === "tshirt" && !back ? <path d="M84,168 Q100,184 116,168" stroke={shade(cloth, 0.25)} strokeWidth={5} fill="none" /> : null}
 
       {/* Head group (bobs + tilts) */}
       <g transform={`translate(0 ${headBob}) rotate(${headTilt} 100 140)`}>
@@ -340,7 +388,10 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
         <circle cx={55} cy={106} r={9} fill={skin} />
         <circle cx={145} cy={106} r={9} fill={skin} />
         {/* Hair */}
-        {!accessories.includes("headwrap") ? (
+        {back && !accessories.includes("headwrap") && hair !== "none" ? (
+          // From behind the hair covers the whole back of the head.
+          <path d="M54,104 C48,44 152,44 146,104 C144,124 130,138 100,140 C70,138 56,124 54,104 Z" fill={hairColor} />
+        ) : !accessories.includes("headwrap") ? (
           hair === "short" || hair === "puffs" || hair === "bun" ? (
             <path d="M54,102 C50,44 150,44 146,102 C140,80 122,70 100,70 C78,70 60,80 54,102 Z" fill={hairColor} />
           ) : hair === "fade" ? (
@@ -349,9 +400,11 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
         ) : null}
 
         {/* Face (looks down a little when using a phone) */}
-        <g transform={`translate(0 ${p.gaze * 5})`}>
-          <FaceFeatures face={face} blink={blink} skin={skin} glasses={accessories.includes("glasses")} />
-        </g>
+        {!back ? (
+          <g transform={`translate(0 ${p.gaze * 5})`}>
+            <FaceFeatures face={face} blink={blink} skin={skin} glasses={accessories.includes("glasses")} />
+          </g>
+        ) : null}
 
         {/* Headwrap (gele-inspired): band + tall fan with fold lines */}
         {accessories.includes("headwrap") ? (
@@ -374,6 +427,7 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
         </g>
       ) : null}
       {arm(SHOULDER_R, R)}
+      </g>
     </g>
   );
 };

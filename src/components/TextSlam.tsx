@@ -16,6 +16,8 @@ export type CountSpec = {
   prefix?: string;
   suffix?: string;
   decimals?: number;
+  /** Easing for the count (default: ease-out cubic). Use an ease-in to "race". */
+  easing?: (t: number) => number;
 };
 
 export type TextSlamProps = ThemableProps & {
@@ -93,7 +95,7 @@ export const TextSlam: React.FC<TextSlamProps> = ({
     const p = interpolate(frame - at, [0, count.frames ?? 40], [0, 1], {
       extrapolateLeft: "clamp",
       extrapolateRight: "clamp",
-      easing: Easing.out(Easing.cubic),
+      easing: count.easing ?? Easing.out(Easing.cubic),
     });
     const n = count.from + (count.to - count.from) * p;
     content = `${count.prefix ?? ""}${formatNumber(n, count.decimals)}${count.suffix ?? ""}`;

@@ -2,7 +2,7 @@
 // `at` is seconds from the START OF THE SCENE. A chunk stays up until the next
 // chunk (or the end of the scene). Wrap words in *stars* to highlight them gold.
 // Captions use the voiceover text verbatim, so they double as the VO script.
-export type ScriptLine = { at: number; text: string };
+import type { ScriptLine } from "../lib/timeline";
 
 export const SCRIPT: Record<string, ScriptLine[]> = {
   coldOpen: [
