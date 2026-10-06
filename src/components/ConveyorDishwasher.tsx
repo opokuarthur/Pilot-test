@@ -187,7 +187,7 @@ export const ConveyorDishwasher: React.FC<ConveyorDishwasherProps> = ({
       {/* Door seams + panel */}
       <line x1={500} x2={500} y1={190} y2={600} stroke={shade(steel, 0.35)} strokeWidth={3} />
       <rect x={390} y={196} width={220} height={110} rx={10} fill={colors.ink} />
-      <text x={500} y={236} textAnchor="middle" fontFamily={fonts.body} fontWeight={800} fontSize={24} fill={tint(colors.gold, 0.1)} letterSpacing={3}>
+      <text x={500} y={236} textAnchor="middle" fontFamily={fonts.body} fontWeight={800} fontSize={19} fill={tint(colors.gold, 0.1)} letterSpacing={1.5}>
         WASH · RINSE · DRY
       </text>
       {[0, 1, 2, 3, 4].map((i) => {

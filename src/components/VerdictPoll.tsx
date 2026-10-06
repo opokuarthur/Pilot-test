@@ -122,7 +122,8 @@ export const VerdictPoll: React.FC<VerdictPollProps> = ({
       <svg width={1080} height={1920} style={{ position: "absolute", inset: 0 }}>
         <path d={`M0 0 H${560 + (1 - inP) * -700} L${520 + (1 - inP) * -700} 1920 H0 Z`} fill={alpha(L, 0.22 + 0.12 * Math.max(0, lead))} />
         <path d={`M1080 0 H${560 + (1 - inP) * 700} L${520 + (1 - inP) * 700} 1920 H1080 Z`} fill={alpha(R, 0.22 + 0.12 * Math.max(0, -lead))} />
-        <line x1={560} y1={0} x2={520} y2={1920} stroke={colors.cream} strokeWidth={8} opacity={inP} />
+        {/* Divider stops above the poll bar so it never crosses the captions */}
+        <line x1={556} y1={0} x2={544} y2={barY - 90} stroke={colors.cream} strokeWidth={8} opacity={inP} />
       </svg>
       {side(leftLabel, L, true)}
       {side(rightLabel, R, false)}

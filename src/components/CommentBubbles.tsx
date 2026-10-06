@@ -38,29 +38,44 @@ export type CommentBubblesProps = ThemableProps & {
 export const bubbleWidth = (text: string, fontSize = 46) => fontSize * (0.6 * Array.from(text).length + 3.6);
 
 /**
- * Scatter `texts` down a box, staggered in time (each gap × accel), deterministically.
- * Bubbles are kept fully inside the box horizontally.
+ * Flood layout: the first `rows` comments each get their own row (in a shuffled
+ * order) so they never overlap; later ones land on top, between rows, like a
+ * pile-on. Bubbles stay fully inside the box horizontally. Deterministic.
  */
 export const floodComments = (
   texts: string[],
-  opts: { start: number; interval: number; accel?: number; box: { left: number; top: number; width: number; height: number }; fontSize?: number; seed?: string },
+  opts: {
+    start: number;
+    interval: number;
+    accel?: number;
+    box: { left: number; top: number; width: number; height: number };
+    rows?: number;
+    fontSize?: number;
+    seed?: string;
+  },
 ): CommentItem[] => {
   const { start, interval, accel = 1, box, fontSize = 46, seed = "flood" } = opts;
+  const rows = opts.rows ?? Math.min(texts.length, 8);
+  const rowH = box.height / rows;
   const items: CommentItem[] = [];
   let t = start;
   let gap = interval;
-  const rows = texts.length;
   texts.forEach((text, i) => {
     const r = (k: string) => random(`${seed}-${k}-${i}`);
     const free = Math.max(0, box.width - bubbleWidth(text, fontSize));
-    // Alternate sides so neighbours don't stack in the same column.
+    const firstWave = i < rows;
+    // Shuffle rows with a stride coprime to `rows` (each row used once); later comments sit half a row down.
+    let stride = Math.max(2, Math.round(rows / 2) - 1);
+    const gcd = (x: number, y: number): number => (y ? gcd(y, x % y) : x);
+    while (gcd(stride, rows) !== 1) stride++;
+    const row = firstWave ? (i * stride) % rows : Math.floor(r("row") * (rows - 1));
     const side = i % 2 ? 0.55 + r("x") * 0.45 : r("x") * 0.45;
     items.push({
       text,
       at: Math.round(t),
       x: box.left + side * free,
-      y: box.top + ((i * 5) % rows) / Math.max(1, rows - 1) * box.height + (r("y") - 0.5) * 24,
-      rotate: (r("r") - 0.5) * 7,
+      y: box.top + row * rowH + (firstWave ? 0 : rowH * 0.5),
+      rotate: (r("r") - 0.5) * (firstWave ? 5 : 9),
       likes: Math.floor(r("l") * 900) + 12,
       seed: `${seed}${i}`,
     });
