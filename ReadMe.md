@@ -77,3 +77,34 @@ video can be re-skinned with `<ThemeProvider theme={…}>`.
   scene file.
 - When a voiceover is added later, set each caption's `at` to the spoken
   timestamp and nudge the scene constants to match.
+
+---
+
+# Video 2: Five Thousand Plates
+
+Composition `FiveThousandPlates` (1080×1920, 30fps, 150 s, silent, captions carry
+the VO). Code lives in `src/five-thousand-plates/` (script, timeline, scenes,
+stop art, photo manifest); new reusable components are in `src/components/`.
+
+```bash
+npm run photos:import       # copy the real photos from ~/Downloads into public/assets/rnaq/
+npm run render:plates       # render out/five-thousand-plates.mp4
+npx remotion render Plates2-who out/scene2.mp4   # one scene
+```
+
+New components: `PlateStack`, `Stopwatch`, `MathWrite`, `CommentBubbles`,
+`TalkShowSet`, `HotelBuilding` (Building's `hotel` variant), `BreakfastTray`,
+`ConveyorDishwasher`, `TimelineWalk`, `VerdictPoll`, `PhotoCutout`, `PhotoCard`,
+plus shared `SceneSeries` and `lib/timeline.ts`. `Person` gained faceless
+`view="back"`, `silhouette`, `rimLight` and a `walk` cycle.
+
+Real photos (`src/five-thousand-plates/credits.ts`): each is used only if its
+file exists in `public/` at bundle time, otherwise the illustrated version is
+shown. Fill in the `[source]` credits before publishing.
+
+| File | Used in |
+|---|---|
+| `assets/rnaq/rnaq-cutout.png` (from `rnaq-portrait.png` via `scripts/prepare-rnaq-cutout.py`) | Scene 2 sticker |
+| `assets/rnaq/jamestown-lighthouse.jpg` | Scene 2 "illustration → reality" reveal |
+| `assets/rnaq/rnaq-bugatti.jpg` | Scene 2 last stop (replaces the car) |
+| `assets/rnaq/delay-interview.png` | Scene 3 photo card over the talk-show set |

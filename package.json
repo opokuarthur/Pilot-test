@@ -2,12 +2,14 @@
   "name": "withdrawal-pending",
   "version": "1.0.0",
   "private": true,
-  "description": "Withdrawal Pending: Ghana's Ponzi Problem — vertical animated short built with Remotion",
+  "description": "Withdrawal Pending: Ghana's Ponzi Problem \u2014 vertical animated short built with Remotion",
   "scripts": {
     "studio": "remotion studio",
     "render": "remotion render WithdrawalPending out/withdrawal-pending.mp4",
     "still": "remotion still",
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "render:plates": "remotion render FiveThousandPlates out/five-thousand-plates.mp4",
+    "photos:import": "bash scripts/import-rnaq-photos.sh"
   },
   "dependencies": {
     "@remotion/cli": "4.0.533",

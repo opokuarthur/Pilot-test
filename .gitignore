@@ -1,4 +1,4 @@
 node_modules/
 out/
 .DS_Store
-public/.sandbox-fonts/
+public/.sandbox-*/

@@ -190,8 +190,11 @@ export const CashStacks: React.FC = () => {
   );
 };
 
-/** A generic hypercar and a private jet, with party balloons and confetti. */
-export const CarAndJet: React.FC<{ confettiAt?: number }> = ({ confettiAt = 0 }) => {
+/**
+ * A generic hypercar and a private jet, with party balloons and confetti.
+ * `photoMode`: no car and the jet sits higher, leaving room for a real photo card.
+ */
+export const CarAndJet: React.FC<{ confettiAt?: number; photoMode?: boolean }> = ({ confettiAt = 0, photoMode = false }) => {
   const frame = useCurrentFrame();
   const { colors } = useTheme();
   const body = "#2C4E8A";
@@ -201,7 +204,7 @@ export const CarAndJet: React.FC<{ confettiAt?: number }> = ({ confettiAt = 0 })
       {/* Tarmac line */}
       <rect x={-100} y={600} width={1080} height={8} fill={alpha(colors.cream, 0.2)} />
       {/* Jet */}
-      <g transform="translate(420 300) scale(0.92)">
+      <g transform={photoMode ? "translate(440 62) scale(0.72)" : "translate(420 300) scale(0.92)"}>
         <path d="M-330 40 Q-340 0 -280 -10 L240 -20 Q330 -10 360 30 Q330 60 240 62 L-280 70 Q-330 66 -330 40 Z" fill={colors.cream} />
         <path d="M-300 -6 L-360 -110 L-310 -110 L-220 -10 Z" fill={tint(colors.cream, 0.1)} />
         <path d="M-60 40 L-200 170 L-150 170 L40 44 Z" fill={shade(colors.cream, 0.12)} />
@@ -211,11 +214,16 @@ export const CarAndJet: React.FC<{ confettiAt?: number }> = ({ confettiAt = 0 })
         ))}
         <path d="M290 0 Q320 6 336 24 L296 24 Z" fill={shade(body, 0.3)} />
         <rect x={-246} y={-10} width={56} height={30} rx={14} fill={tint(colors.grey, 0.3)} />
-        {/* Landing gear */}
-        <rect x={-200} y={66} width={8} height={196} fill={shade(colors.grey, 0.4)} />
-        <circle cx={-196} cy={266} r={14} fill={colors.ink} />
+        {/* Landing gear (in the air in photo mode) */}
+        {!photoMode ? (
+          <>
+            <rect x={-200} y={66} width={8} height={196} fill={shade(colors.grey, 0.4)} />
+            <circle cx={-196} cy={266} r={14} fill={colors.ink} />
+          </>
+        ) : null}
       </g>
       {/* Hypercar (no badges) */}
+      {!photoMode ? (
       <g transform="translate(250 690) scale(0.72)">
         <ellipse cx={0} cy={66} rx={330} ry={16} fill="#000" opacity={0.35} />
         <path d="M-320 40 Q-330 0 -250 -16 Q-160 -80 -40 -84 Q80 -86 180 -30 Q300 -20 322 10 Q330 40 300 52 L-300 56 Z" fill={body} />
@@ -237,6 +245,7 @@ export const CarAndJet: React.FC<{ confettiAt?: number }> = ({ confettiAt = 0 })
           </g>
         ))}
       </g>
+      ) : null}
       {/* Balloons */}
       {[
         { x: 60, y: 140, c: colors.gold },
