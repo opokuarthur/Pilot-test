@@ -47,6 +47,36 @@ const REVEAL_OUT = [204, 222];
 const HIDE_CUTOUT = [ARRIVALS[3] - 50, ARRIVALS[3] - 26];
 const BUGATTI_IN = ARRIVALS[3] + 4;
 const BUGATTI_BOTTOM = 1182;
+const PLATE_RING = BUGATTI_IN + 34;
+/** Number plate position in the Bugatti photo, as fractions of its width/height. */
+const PLATE = { cx: 0.882, cy: 0.78, rx: 0.15, ry: 0.05 };
+
+/** Gold ring that draws itself around the number plate, then pulses softly. */
+const PlateRing: React.FC = () => {
+  const frame = useCurrentFrame();
+  const { colors } = useTheme();
+  if (frame < PLATE_RING) return null;
+  const draw = interpolate(frame, [PLATE_RING, PLATE_RING + 16], [0, 1], { extrapolateRight: "clamp", easing: Easing.out(Easing.cubic) });
+  const pulse = 1 + 0.04 * Math.sin((frame - PLATE_RING) / 6);
+  return (
+    <svg viewBox="0 0 100 100" preserveAspectRatio="none" style={{ position: "absolute", inset: 0, width: "100%", height: "100%", overflow: "visible" }}>
+      <ellipse
+        cx={PLATE.cx * 100}
+        cy={PLATE.cy * 100}
+        rx={PLATE.rx * 100 * pulse}
+        ry={PLATE.ry * 100 * pulse}
+        fill="none"
+        stroke={colors.gold}
+        strokeWidth={6}
+        vectorEffect="non-scaling-stroke"
+        pathLength={1}
+        strokeDasharray={1}
+        strokeDashoffset={1 - draw}
+        style={{ filter: `drop-shadow(0 0 6px ${colors.gold})` }}
+      />
+    </svg>
+  );
+};
 
 /** Illustrated Jamestown with the real photo wiping in over it (stop box: 880×760). */
 const JamestownStop: React.FC<{ photo: boolean }> = ({ photo }) => {
@@ -80,7 +110,7 @@ const JamestownStop: React.FC<{ photo: boolean }> = ({ photo }) => {
           >
             <Img
               src={staticFile(PHOTOS.jamestown.file)}
-              style={{ display: "block", maxWidth: 880, maxHeight: 760, width: "auto", height: "auto", transform: `scale(${push})`, transformOrigin: "50% 60%", filter: "sepia(0.04) saturate(1.02)" }}
+              style={{ display: "block", width: Math.min(880, 760 * PHOTOS.jamestown.aspect), height: Math.min(880, 760 * PHOTOS.jamestown.aspect) / PHOTOS.jamestown.aspect, transform: `scale(${push})`, transformOrigin: "50% 60%", filter: "sepia(0.04) saturate(1.02)" }}
             />
             <div style={{ position: "absolute", left: 28, top: 28, lineHeight: 1 }}>
               <TextSlam text="THE REAL JAMESTOWN" at={REVEAL_IN[1] - 4} fontSize={50} color={colors.navy} plate={colors.gold} rotate={-2} fromScale={1.6} />
@@ -157,12 +187,14 @@ export const Scene2Who: React.FC = () => {
         <div style={{ position: "absolute", left: 0, right: 0, bottom: 1920 - BUGATTI_BOTTOM, display: "flex", justifyContent: "center" }}>
           <PhotoCard
             src={staticFile(PHOTOS.bugatti.file)}
+            aspect={PHOTOS.bugatti.aspect}
             maxWidth={760}
-            maxHeight={440}
+            maxHeight={540}
             rotate={2.5}
             appearAt={BUGATTI_IN}
             from="right"
             credit={PHOTOS.bugatti.credit}
+            overlay={<PlateRing />}
           />
         </div>
       ) : null}

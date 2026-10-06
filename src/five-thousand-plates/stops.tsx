@@ -204,7 +204,7 @@ export const CarAndJet: React.FC<{ confettiAt?: number; photoMode?: boolean }> =
       {/* Tarmac line */}
       <rect x={-100} y={600} width={1080} height={8} fill={alpha(colors.cream, 0.2)} />
       {/* Jet */}
-      <g transform={photoMode ? "translate(440 62) scale(0.72)" : "translate(420 300) scale(0.92)"}>
+      <g transform={photoMode ? "translate(260 12) scale(0.5)" : "translate(420 300) scale(0.92)"}>
         <path d="M-330 40 Q-340 0 -280 -10 L240 -20 Q330 -10 360 30 Q330 60 240 62 L-280 70 Q-330 66 -330 40 Z" fill={colors.cream} />
         <path d="M-300 -6 L-360 -110 L-310 -110 L-220 -10 Z" fill={tint(colors.cream, 0.1)} />
         <path d="M-60 40 L-200 170 L-150 170 L40 44 Z" fill={shade(colors.cream, 0.12)} />

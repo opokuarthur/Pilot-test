@@ -60,7 +60,7 @@ export const Scene3Claim: React.FC = () => {
       {/* The real interview frame, over the set (stays to the end of the scene) */}
       {delayPhoto ? (
         <div style={{ position: "absolute", left: 0, right: 0, top: 500, height: 790, display: "flex", alignItems: "center", justifyContent: "center" }}>
-          <PhotoCard src={staticFile(PHOTOS.delay.file)} maxWidth={740} maxHeight={560} rotate={-2.5} appearAt={CARD_IN} from="right" credit={PHOTOS.delay.credit} />
+          <PhotoCard src={staticFile(PHOTOS.delay.file)} aspect={PHOTOS.delay.aspect} maxWidth={740} maxHeight={560} rotate={-2.5} appearAt={CARD_IN} from="right" credit={PHOTOS.delay.credit} />
         </div>
       ) : null}
       <div style={{ position: "absolute", left: 0, right: 0, top: 210, display: "flex", justifyContent: "center" }}>

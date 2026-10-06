@@ -4,8 +4,9 @@
 // grade (natural colour, no duotone) and a small credit label under the card.
 //
 // The photo is never cropped or distorted: it is drawn at its natural aspect
-// ratio, as large as fits inside maxWidth × maxHeight. Place the card with a
-// flex/centred parent; it sizes itself.
+// ratio, as large as fits inside maxWidth × maxHeight (pass `aspect` to let a
+// small photo scale UP to that box; without it the photo never exceeds its
+// natural size). Place the card with a flex/centred parent; it sizes itself.
 import React from "react";
 import { Easing, Img, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { alpha, shade } from "../lib/color";
@@ -13,6 +14,8 @@ import { ThemableProps, useTheme } from "../lib/theme-context";
 
 export type PhotoCardProps = ThemableProps & {
   src: string;
+  /** Natural width ÷ height. When given, the photo fills the max box (can scale up). */
+  aspect?: number;
   /** Largest size of the photo itself (px), excluding the frame. */
   maxWidth?: number;
   maxHeight?: number;
@@ -33,10 +36,13 @@ export type PhotoCardProps = ThemableProps & {
   warmth?: number;
   /** Credit shown under the card. */
   credit?: string;
+  /** Drawn over the photo area (e.g. a callout ring); the box matches the photo exactly. */
+  overlay?: React.ReactNode;
 };
 
 export const PhotoCard: React.FC<PhotoCardProps> = ({
   src,
+  aspect,
   maxWidth = 760,
   maxHeight = 560,
   border = 18,
@@ -49,6 +55,7 @@ export const PhotoCard: React.FC<PhotoCardProps> = ({
   float = 6,
   warmth = 0.3,
   credit,
+  overlay,
   ...themable
 }) => {
   const frame = useCurrentFrame();
@@ -72,6 +79,9 @@ export const PhotoCard: React.FC<PhotoCardProps> = ({
   const w = warmth;
   const grade = w > 0 ? `sepia(${0.12 * w}) saturate(${1 + 0.06 * w}) brightness(${1 + 0.02 * w})` : undefined;
   const frameC = frameColor ?? colors.cream;
+  const size = aspect
+    ? { width: Math.min(maxWidth, maxHeight * aspect), height: Math.min(maxWidth, maxHeight * aspect) / aspect }
+    : { width: "auto" as const, height: "auto" as const, maxWidth, maxHeight };
 
   return (
     <div
@@ -92,21 +102,33 @@ export const PhotoCard: React.FC<PhotoCardProps> = ({
           lineHeight: 0,
         }}
       >
-        <Img
-          src={src}
-          style={{
-            display: "block",
-            maxWidth,
-            maxHeight,
-            width: "auto",
-            height: "auto",
-            borderRadius: border * 0.35,
-            filter: grade,
-          }}
-        />
+        <div style={{ position: "relative" }}>
+          <Img
+            src={src}
+            style={{
+              display: "block",
+              ...size,
+              borderRadius: border * 0.35,
+              filter: grade,
+            }}
+          />
+          {overlay ? <div style={{ position: "absolute", inset: 0, lineHeight: 1 }}>{overlay}</div> : null}
+        </div>
       </div>
       {credit ? (
-        <div style={{ fontFamily: fonts.body, fontWeight: 700, fontSize: 24, letterSpacing: 0.5, color: alpha(colors.cream, 0.7), whiteSpace: "nowrap" }}>
+        <div
+          style={{
+            fontFamily: fonts.body,
+            fontWeight: 700,
+            fontSize: 24,
+            letterSpacing: 0.5,
+            color: alpha(colors.cream, 0.75),
+            whiteSpace: "nowrap",
+            padding: "3px 12px",
+            borderRadius: 14,
+            background: alpha(colors.ink, 0.55),
+          }}
+        >
           {credit}
         </div>
       ) : null}

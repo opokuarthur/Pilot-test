@@ -11,9 +11,13 @@ export const RNAQ_PHOTO = {
 } as const;
 
 export const PHOTOS = {
-  jamestown: { file: "assets/rnaq/jamestown-lighthouse.jpg", credit: "Photo: [source]" },
-  bugatti: { file: "assets/rnaq/rnaq-bugatti.jpg", credit: "Photo: [source]" },
-  delay: { file: "assets/rnaq/delay-interview.png", credit: "Source: The Delay Show" },
+  // 447×447 source, upscaled 2× (Lanczos + light sharpen; no faces in it).
+  jamestown: { file: "assets/rnaq/jamestown-lighthouse.jpg", aspect: 1, credit: "Photo: [source]" },
+  // 402×497 source, untouched (shown near native size so it stays sharp).
+  bugatti: { file: "assets/rnaq/rnaq-bugatti.jpg", aspect: 402 / 497, credit: "Photo: [source]" },
+  // Cropped to the two people (x 100–1050, y 0–482 of the 1125×902 upload):
+  // removes an inset photo of an unrelated person.
+  delay: { file: "assets/rnaq/delay-interview.png", aspect: 950 / 482, credit: "Source: The Delay Show" },
 } as const;
 
 /** True if `file` (path inside public/) exists in this bundle. */
