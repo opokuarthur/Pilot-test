@@ -37,7 +37,14 @@ export type ThemeFonts = {
   body: string;
 };
 
-export type Theme = { colors: ThemeColors; fonts: ThemeFonts };
+export type Theme = {
+  colors: ThemeColors;
+  fonts: ThemeFonts;
+  /** Warm skin tones used by the Person character system. */
+  skinTones: string[];
+  /** Clothing colours for generated characters (Crowd, PyramidCollapse). */
+  outfitColors: string[];
+};
 
 export const defaultTheme: Theme = {
   colors: {
@@ -46,13 +53,15 @@ export const defaultTheme: Theme = {
     red: "#D62828",
     cream: "#F4EDE1",
     ink: "#0B1326",
-    grey: "#8D8F94",
+    grey: "#8A8F98",
     up: "#3FA66B",
   },
   fonts: {
     headline: anton.fontFamily,
     body: inter.fontFamily,
   },
+  skinTones: ["#8D5524", "#A0662E", "#6B3E1F"],
+  outfitColors: ["#E9B44C", "#D62828", "#F4EDE1", "#3E6FB0", "#2F7D5B", "#C8553D", "#7A4E9C"],
 };
 
 /** Spring presets shared by all components (see lib/motion.ts). */

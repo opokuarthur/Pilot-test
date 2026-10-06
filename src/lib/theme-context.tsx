@@ -12,6 +12,8 @@ export const ThemeProvider: React.FC<{ theme?: Partial<Theme>; children: React.R
   const value: Theme = {
     colors: { ...defaultTheme.colors, ...theme?.colors },
     fonts: { ...defaultTheme.fonts, ...theme?.fonts },
+    skinTones: theme?.skinTones ?? defaultTheme.skinTones,
+    outfitColors: theme?.outfitColors ?? defaultTheme.outfitColors,
   };
   return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 };
@@ -26,6 +28,7 @@ export type ThemableProps = {
 export const useTheme = (overrides?: ThemableProps): Theme => {
   const base = useContext(ThemeContext);
   return {
+    ...base,
     colors: { ...base.colors, ...overrides?.colors },
     fonts: { ...base.fonts, ...overrides?.fonts },
   };

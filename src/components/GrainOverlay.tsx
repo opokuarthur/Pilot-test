@@ -60,7 +60,7 @@ const NoiseLayer: React.FC<{
 );
 
 export const GrainOverlay: React.FC<GrainOverlayProps> = ({
-  opacity = 0.3,
+  opacity = 0.24,
   updateEvery = 2,
   grainFrequency = 0.85,
   scale = 1.5,
