@@ -19,7 +19,7 @@ const MATH_AT = 256;
 
 /** Shared tower look, reused by the ending of Scene 7. */
 export const HOOK_STACK = {
-  x: 600,
+  x: 540, // centred: keeps the tower clear of the top-right watermark
   baseY: 1230,
   plateWidth: 400,
   thickness: 18,
@@ -37,7 +37,7 @@ export const Scene1Hook: React.FC = () => {
   const glow = interpolate(frame, [0, 120, 250], [0.12, 0.2, 0.32], { extrapolateRight: "clamp" });
   return (
     <SceneFrame pushDuration={platesPushFrames("hook")}>
-      <AbsoluteFill style={{ background: `radial-gradient(circle at 56% 55%, ${alpha(colors.gold, glow)} 0%, transparent 55%)` }} />
+      <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 55%, ${alpha(colors.gold, glow)} 0%, transparent 55%)` }} />
       <PlateStack {...HOOK_STACK}>
         {({ cam }) => (
           // "One man": faceless silhouette from behind, standing by the stack.

@@ -168,7 +168,7 @@ export const WarmUpClock: React.FC<WarmUpClockProps> = ({
       {/* Whistle + FULL TIME */}
       {whistleP > 0 ? (
         <>
-          <div style={{ position: "absolute", left: size * 0.62, top: -size * 0.1, transform: `scale(${whistleP}) rotate(${-14 + Math.sin(frame / 2) * 6}deg)` }}>
+          <div style={{ position: "absolute", left: size * 0.62, top: size * 0.04, transform: `scale(${whistleP}) rotate(${-14 + Math.sin(frame / 2) * 6}deg)` }}>
             <svg width={size * 0.6} height={size * 0.4} viewBox="0 0 150 100" style={{ position: "absolute", left: -size * 0.12, top: -size * 0.1, overflow: "visible" }}>
               {[0, 1, 2].map((k) => (
                 <path key={k} d={`M${120 + k * 14} ${20 - k * 10} q 16 30 0 60`} stroke={colors.cream} strokeWidth={6} fill="none" strokeLinecap="round" opacity={0.5 + 0.5 * Math.sin(frame / 2 + k)} />

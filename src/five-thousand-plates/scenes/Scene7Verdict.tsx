@@ -48,7 +48,7 @@ export const Scene7Verdict: React.FC = () => {
         </div>
         {/* Ending: the tower again */}
         <Sequence from={TOWER} layout="none">
-          <AbsoluteFill style={{ background: `radial-gradient(circle at 56% 55%, ${alpha(colors.gold, 0.25)} 0%, transparent 55%)` }} />
+          <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 55%, ${alpha(colors.gold, 0.25)} 0%, transparent 55%)` }} />
           <PlateStack {...HOOK_STACK} startAt={2} firstGap={8} count={400} />
         </Sequence>
         <div style={{ position: "absolute", left: 0, right: 0, top: 230, display: "flex", justifyContent: "center" }}>

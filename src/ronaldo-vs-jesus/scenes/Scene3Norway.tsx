@@ -60,7 +60,7 @@ export const Scene3Norway: React.FC = () => {
               ]}
             />
           </div>
-          <div style={{ position: "absolute", left: 540 - 240, top: 170 }}>
+          <div style={{ position: "absolute", left: 540 - 240, top: 220 }}>
             <WarmUpClock
               size={480}
               appearAt={CLOCK}
