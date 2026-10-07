@@ -13,6 +13,8 @@
 //   view="back"        seen from behind: no face, hair covers the back of the head
 //   silhouette="#0B1326"  the whole figure becomes one solid colour (+ optional rimLight)
 //   walk={24}          walk cycle with a stride every 24 frames (legs + arm swing + bob)
+//   torsoOverlay={…}   SVG drawn over the torso but under the arms, NOT silhouetted
+//                      (e.g. a shirt number or collar on a silhouette)
 import React from "react";
 import { useCurrentFrame } from "remotion";
 import { Animatable, lerp, lerpObj, resolveKeyframes } from "../lib/keyframes";
@@ -69,6 +71,8 @@ export type PersonFigureProps = ThemableProps & {
   rimLight?: string;
   /** Stride period in frames for a walk cycle (0 = standing). */
   walk?: number;
+  /** Drawn in body units over the torso (it breathes with it), under the arms; never silhouetted. */
+  torsoOverlay?: React.ReactNode;
 };
 
 // ---- Expression + pose tables ------------------------------------------------
@@ -198,6 +202,7 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
   silhouette,
   rimLight,
   walk = 0,
+  torsoOverlay,
   ...themable
 }) => {
   const frame = useCurrentFrame();
@@ -275,6 +280,22 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
   const phoneX = both ? (L.hand.x + R.hand.x) / 2 : R.hand.x;
   const phoneY = both ? (L.hand.y + R.hand.y) / 2 - 18 : R.hand.y - 22;
   const screen = phoneScreenColor ?? colors.gold;
+  const bodyFilter = silhouette ? `url(#sil${uid})` : fail > 0 ? `url(#sat${uid})` : undefined;
+  const breatheT = `translate(100 300) scale(1 ${1 + breathe * 0.012}) translate(-100 -300)`;
+
+  const arms = (
+    <>
+      {arm(SHOULDER_L, L)}
+      {phoneWeight > 0.01 ? (
+        <g opacity={phoneWeight} transform={`translate(${phoneX} ${phoneY})`}>
+          <circle r={34} fill={screen} opacity={0.18} />
+          <rect x={-16} y={-28} width={32} height={56} rx={7} fill="#111" />
+          <rect x={-12} y={-23} width={24} height={44} rx={4} fill={screen} />
+        </g>
+      ) : null}
+      {arm(SHOULDER_R, R)}
+    </>
+  );
 
   return (
     <g transform={`translate(0 ${-hop + walkBob}) ${flip ? "translate(200 0) scale(-1 1)" : ""}`}>
@@ -329,7 +350,7 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
       {/* Ground shadow */}
       <ellipse cx={100} cy={400 + hop - walkBob} rx={62 - hop} ry={9} fill="#000" opacity={0.18} />
 
-      <g filter={silhouette ? `url(#sil${uid})` : fail > 0 ? `url(#sat${uid})` : undefined}>
+      <g filter={bodyFilter}>
       {/* Legs + shoes (swing from the hips when walking) */}
       {[
         { x: 66, hip: 81, a: legSwing },
@@ -347,7 +368,7 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
       ) : null}
 
       {/* Torso (breathes) */}
-      <g transform={`translate(100 300) scale(1 ${1 + breathe * 0.012}) translate(-100 -300)`}>
+      <g transform={breatheT}>
         <path d={outfit === "dress" ? DRESS : TORSO} fill={patternFill ?? cloth} />
         {/* Soft side shading for volume */}
         <g clipPath={`url(#torso${uid})`}>
@@ -417,17 +438,15 @@ export const PersonFigure: React.FC<PersonFigureProps> = ({
         ) : null}
       </g>
 
-      {/* Arms, phone, hands */}
-      {arm(SHOULDER_L, L)}
-      {phoneWeight > 0.01 ? (
-        <g opacity={phoneWeight} transform={`translate(${phoneX} ${phoneY})`}>
-          <circle r={34} fill={screen} opacity={0.18} />
-          <rect x={-16} y={-28} width={32} height={56} rx={7} fill="#111" />
-          <rect x={-12} y={-23} width={24} height={44} rx={4} fill={screen} />
-        </g>
-      ) : null}
-      {arm(SHOULDER_R, R)}
+      {/* Arms, phone, hands (drawn separately when there's a torso overlay) */}
+      {torsoOverlay ? null : arms}
       </g>
+      {torsoOverlay ? (
+        <>
+          <g transform={breatheT}>{torsoOverlay}</g>
+          <g filter={bodyFilter}>{arms}</g>
+        </>
+      ) : null}
     </g>
   );
 };

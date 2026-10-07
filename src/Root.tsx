@@ -1,7 +1,8 @@
 // Root: registers every composition shown in Remotion Studio.
 //  • "WithdrawalPending"  — video 1, full
 //  • "FiveThousandPlates" — video 2, full
-//  • "Scene*-*" / "Plates*-*" — each scene alone, with its captions (fast iteration)
+//  • "RonaldoVsJesus"     — video 3, full
+//  • "Scene*-*" / "Plates*-*" / "Rvj*-*" — each scene alone, with its captions (fast iteration)
 //  • "Preview-*"          — component previews
 import React from "react";
 import { AbsoluteFill, Composition, Folder } from "remotion";
@@ -16,6 +17,10 @@ import { FiveThousandPlates } from "./five-thousand-plates/FiveThousandPlates";
 import { PLATES_SCENES, PLATES_TOTAL_FRAMES, PlatesSceneId, platesFrames, platesTimeline } from "./five-thousand-plates/timeline";
 import { PLATES_SCENE_COMPONENTS } from "./five-thousand-plates/scenes";
 import { NewComponentsPreview } from "./previews/NewComponentsPreview";
+import { RonaldoComponentsPreview } from "./previews/RonaldoComponentsPreview";
+import { RonaldoVsJesus } from "./ronaldo-vs-jesus/RonaldoVsJesus";
+import { RVJ_SCENES, RVJ_TOTAL_FRAMES, RvjSceneId, rvjFrames, rvjTimeline } from "./ronaldo-vs-jesus/timeline";
+import { RVJ_SCENE_COMPONENTS } from "./ronaldo-vs-jesus/scenes";
 
 const comp = { fps: VIDEO.fps, width: VIDEO.width, height: VIDEO.height };
 
@@ -35,6 +40,16 @@ const PlatesScenePreview: React.FC<{ id: PlatesSceneId }> = ({ id }) => {
     <AbsoluteFill>
       <Scene />
       <Captions chunks={platesTimeline.sceneCaptions(id)} />
+    </AbsoluteFill>
+  );
+};
+
+const RvjScenePreview: React.FC<{ id: RvjSceneId }> = ({ id }) => {
+  const Scene = RVJ_SCENE_COMPONENTS[id];
+  return (
+    <AbsoluteFill>
+      <Scene />
+      <Captions chunks={rvjTimeline.sceneCaptions(id)} />
     </AbsoluteFill>
   );
 };
@@ -67,10 +82,26 @@ export const RemotionRoot: React.FC = () => (
         />
       ))}
     </Folder>
+    <Composition id="RonaldoVsJesus" component={RonaldoVsJesus} durationInFrames={RVJ_TOTAL_FRAMES} {...comp} />
+    <Folder name="Rvj-Scenes">
+      {RVJ_SCENES.map(({ id }, i) => (
+        <Composition
+          key={id}
+          id={`Rvj${i + 1}-${id}`}
+          component={RvjScenePreview}
+          defaultProps={{ id }}
+          durationInFrames={rvjFrames(id)}
+          {...comp}
+        />
+      ))}
+    </Folder>
     <Folder name="Component-Previews">
       <Composition id="Preview-Characters" component={CharactersPreview} durationInFrames={150} {...comp} />
       <Composition id="Preview-Phone" component={PhonePreview} durationInFrames={300} {...comp} />
       <Composition id="Preview-PlatesComponents" component={NewComponentsPreview} durationInFrames={300} {...comp} />
+      {[1, 2, 3].map((page) => (
+        <Composition key={page} id={`Preview-RonaldoComponents${page}`} component={RonaldoComponentsPreview} defaultProps={{ page }} durationInFrames={300} {...comp} />
+      ))}
     </Folder>
   </>
 );

@@ -1,7 +1,8 @@
 // VerdictPoll: split screen — "POSSIBLE ✅" on the left, "NO WAY ❌" on the
 // right, with a VS badge on a slanted divider and a live poll bar that wobbles
 // between the two. `bias` keyframes push the bar one way or the other; the
-// leading side glows. The ✅ / ❌ marks are drawn as vector icons.
+// leading side glows. The ✅ / ❌ marks are drawn as vector icons; pass
+// `leftIcon` / `rightIcon` (any node, e.g. a big emoji) to replace them.
 import React from "react";
 import { AbsoluteFill, Easing, interpolate, spring, useCurrentFrame, useVideoConfig } from "remotion";
 import { alpha, shade, tint } from "../lib/color";
@@ -25,6 +26,11 @@ export type VerdictPollProps = ThemableProps & {
   dim?: number;
   /** Small caption under the bar. */
   caption?: string;
+  /** Replace the ✅ / ❌ icons. */
+  leftIcon?: React.ReactNode;
+  rightIcon?: React.ReactNode;
+  /** Label font size (long labels need less than the default 112). */
+  labelSize?: number;
 };
 
 const Check: React.FC<{ size: number; color: string }> = ({ size, color }) => (
@@ -55,6 +61,9 @@ export const VerdictPoll: React.FC<VerdictPollProps> = ({
   rightColor,
   dim = 0,
   caption = "WHAT DO YOU THINK?",
+  leftIcon,
+  rightIcon,
+  labelSize = 112,
   ...themable
 }) => {
   const frame = useCurrentFrame();
@@ -98,11 +107,11 @@ export const VerdictPoll: React.FC<VerdictPollProps> = ({
           transform: `translateX(${slide}px) scale(${1 + glow * 0.08})`,
         }}
       >
-        {left ? <Check size={170} color={color} /> : <Cross size={170} color={color} />}
+        {left ? leftIcon ?? <Check size={170} color={color} /> : rightIcon ?? <Cross size={170} color={color} />}
         <div
           style={{
             fontFamily: fonts.headline,
-            fontSize: 112,
+            fontSize: labelSize,
             lineHeight: 1,
             color: colors.cream,
             textShadow: `5px 5px 0 ${colors.ink}`,

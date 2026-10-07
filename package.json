@@ -9,7 +9,9 @@
     "still": "remotion still",
     "typecheck": "tsc --noEmit",
     "render:plates": "remotion render FiveThousandPlates out/five-thousand-plates.mp4",
-    "photos:import": "bash scripts/import-rnaq-photos.sh"
+    "photos:import": "bash scripts/import-rnaq-photos.sh",
+    "render:ronaldo": "remotion render RonaldoVsJesus out/ronaldo-vs-jesus.mp4",
+    "photos:ronaldo": "python3 scripts/prepare-ronaldo-cutouts.py"
   },
   "dependencies": {
     "@remotion/cli": "4.0.533",
