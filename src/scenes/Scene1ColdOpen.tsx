@@ -1,4 +1,7 @@
-// Scene 1 — Cold open (0:00–0:15).
+// Scene 1 — Cold open (0:00–0:18).
+// Beats sit on the voiceover: count-up on "made 2,000", first tap on
+// "withdraw", taps 2 and 3 on the 2nd and 3rd "Pending", crack after, other
+// phones on "not alone".
 // Hand holding the investment app: balance counts 500 → 2,000, tap withdraw →
 // Pending, tap again → Pending, tap again → screen cracks and goes grey.
 // "You're not alone": other phones stuck on Pending pop up in the background.
@@ -13,9 +16,10 @@ import { useTheme } from "../lib/theme-context";
 import { sceneFrames } from "../config/timeline";
 import { VIDEO } from "../config/video";
 
-const TAPS = [150, 228, 268];
-const CRACK = 305;
-const OTHERS_AT = 384;
+const TAPS = [194, 336, 373];
+const CRACK = 408;
+const OTHERS_AT = 488;
+const COUNT_AT = 96;
 
 /** Small background phone stuck on a red pending spinner. */
 const MiniPending: React.FC<{ x: number; y: number; at: number; rot: number }> = ({ x, y, at, rot }) => {
@@ -68,7 +72,7 @@ export const Scene1ColdOpen: React.FC = () => {
         <AbsoluteFill style={{ alignItems: "center", top: 140 + enter }}>
           <HandPhone
             width={720}
-            phone={{ balanceFrom: 500, balanceTo: 2000, countAt: 70, countFrames: 50, taps: TAPS, crackAt: CRACK }}
+            phone={{ balanceFrom: 500, balanceTo: 2000, countAt: COUNT_AT, countFrames: 44, taps: TAPS, crackAt: CRACK }}
           />
         </AbsoluteFill>
       </ParallaxLayer>

@@ -9,24 +9,28 @@ import { BrandLogo } from "./BrandLogo";
 import { GrainOverlay } from "../components/GrainOverlay";
 import { shade } from "../lib/color";
 
-/** End card length in frames at a given fps. */
-export const endCardFrames = (fps: number) => Math.round(BRAND.timing.endCard * fps);
+/** End card length in frames at a given fps (`seconds` overrides the brand default). */
+export const endCardFrames = (fps: number, seconds: number = BRAND.timing.endCard) => Math.round(seconds * fps);
 
 export type EndCardProps = {
   /** Where the arrow points (px): the follow button's usual spot. */
   arrowTarget?: { x: number; y: number };
+  /** Frames where the catchphrase, the follow line and the arrow come in (e.g. to match a voiceover). */
+  lineAt?: number;
+  followAt?: number;
+  arrowAt?: number;
 };
 
-export const EndCard: React.FC<EndCardProps> = ({ arrowTarget = { x: 985, y: 1040 } }) => {
+export const EndCard: React.FC<EndCardProps> = ({ arrowTarget = { x: 985, y: 1040 }, lineAt = 8, followAt = 18, arrowAt }) => {
   const frame = useCurrentFrame();
   const { fps } = useVideoConfig();
   const { navy, gold, cream } = BRAND.colors;
   const pop = (at: number, cfg = { damping: 12, mass: 0.6, stiffness: 160 }) => spring({ frame: frame - at, fps, config: cfg });
 
   const logo = pop(0);
-  const line = pop(8, { damping: 9, mass: 0.6, stiffness: 170 });
-  const follow = pop(18);
-  const arrowIn = pop(26);
+  const line = pop(lineAt, { damping: 9, mass: 0.6, stiffness: 170 });
+  const follow = pop(followAt);
+  const arrowIn = pop(arrowAt ?? followAt + 8);
   const bob = Math.sin(frame / 5) * 14;
   const pulse = (frame % 30) / 30;
 

@@ -1,4 +1,4 @@
-// Scene 2 — YepBit (0:15–0:40).
+// Scene 2 — YepBit (0:18–0:40). Freeze + slam on "not licensed", padlock on "frozen".
 // Four friends cheer at their phones in a living room while a candlestick
 // chart climbs on the wall TV. On the SEC warning everything freezes, goes
 // grey, faces turn shocked, and "NOT LICENSED" slams on. Later a padlock
@@ -17,9 +17,9 @@ import { CAST } from "../config/cast";
 import { sceneFrames } from "../config/timeline";
 import { VIDEO } from "../config/video";
 
-const FREEZE = 372;
-const SLAM = 378;
-const LOCK = 612;
+const FREEZE = 366;
+const SLAM = 372;
+const LOCK = 608;
 
 const Padlock: React.FC<{ color: string; body: string }> = ({ color, body }) => (
   <svg width={150} height={180} viewBox="0 0 150 180">

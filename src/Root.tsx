@@ -8,9 +8,9 @@
 // Every full video is wrapped in <BrandedVideo>: watermark after 1.5 s, and the
 // logo sting + end card appended after the last scene (+5 s).
 import React from "react";
-import { AbsoluteFill, Composition, Folder, Sequence } from "remotion";
+import { AbsoluteFill, Audio, Composition, Folder, Sequence, staticFile } from "remotion";
 import { VIDEO } from "./config/video";
-import { SCENE_SECONDS, SceneId, TOTAL_FRAMES, sceneCaptions, sceneFrames } from "./config/timeline";
+import { SCENE_SECONDS, SceneId, TOTAL_FRAMES, sceneCaptions, sceneFrames, sceneStart } from "./config/timeline";
 import { SCENE_COMPONENTS } from "./scenes";
 import { Captions } from "./components/Captions";
 import { Video } from "./Video";
@@ -25,6 +25,8 @@ import { RonaldoVsJesus } from "./ronaldo-vs-jesus/RonaldoVsJesus";
 import { RVJ_SCENES, RVJ_TOTAL_FRAMES, RvjSceneId, rvjFrames, rvjTimeline } from "./ronaldo-vs-jesus/timeline";
 import { RVJ_SCENE_COMPONENTS } from "./ronaldo-vs-jesus/scenes";
 import { BrandedVideo, brandedDuration } from "./brand/BrandedVideo";
+import { WITHDRAWAL_PENDING_END_CARD, WithdrawalPendingSoundtrack } from "./WithdrawalPendingSoundtrack";
+import { VOICEOVER } from "./config/voiceover";
 import { Watermark } from "./brand/Watermark";
 import { LogoSting, stingFrames } from "./brand/LogoSting";
 import { EndCard, endCardFrames } from "./brand/EndCard";
@@ -34,10 +36,19 @@ const comp = { fps: VIDEO.fps, width: VIDEO.width, height: VIDEO.height };
 
 // Full videos with the channel branding (watermark + sting + end card).
 type BrandedProps = { watermark?: boolean };
+const WP_END = WITHDRAWAL_PENDING_END_CARD;
 const WithdrawalPendingBranded: React.FC<BrandedProps> = ({ watermark }) => (
-  <BrandedVideo contentFrames={TOTAL_FRAMES} watermark={watermark}>
-    <Video />
-  </BrandedVideo>
+  <AbsoluteFill>
+    <BrandedVideo
+      contentFrames={TOTAL_FRAMES}
+      watermark={watermark}
+      endCardSeconds={WP_END.seconds}
+      endCard={{ lineAt: WP_END.lineAt, followAt: WP_END.followAt }}
+    >
+      <Video />
+    </BrandedVideo>
+    <WithdrawalPendingSoundtrack />
+  </AbsoluteFill>
 );
 const FiveThousandPlatesBranded: React.FC<BrandedProps> = ({ watermark }) => (
   <BrandedVideo contentFrames={PLATES_TOTAL_FRAMES} watermark={watermark}>
@@ -65,6 +76,8 @@ const ScenePreview: React.FC<{ id: SceneId }> = ({ id }) => {
   const Scene = SCENE_COMPONENTS[id];
   return (
     <AbsoluteFill>
+      {/* The matching slice of the voiceover, to check sync scene by scene */}
+      <Audio src={staticFile(VOICEOVER.file)} trimBefore={sceneStart(id)} volume={VOICEOVER.volume} />
       <Scene />
       <Captions chunks={sceneCaptions(id)} />
       <Watermark />
@@ -96,7 +109,7 @@ const RvjScenePreview: React.FC<{ id: RvjSceneId }> = ({ id }) => {
 
 export const RemotionRoot: React.FC = () => (
   <>
-    <Composition id="WithdrawalPending" component={WithdrawalPendingBranded} durationInFrames={brandedDuration(TOTAL_FRAMES, VIDEO.fps)} {...comp} />
+    <Composition id="WithdrawalPending" component={WithdrawalPendingBranded} durationInFrames={brandedDuration(TOTAL_FRAMES, VIDEO.fps, WP_END.seconds)} {...comp} />
     <Folder name="Scenes">
       {SCENE_SECONDS.map(({ id }, i) => (
         <Composition

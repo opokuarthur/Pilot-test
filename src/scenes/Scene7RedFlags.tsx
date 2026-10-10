@@ -1,4 +1,6 @@
-// Scene 7 — Red flags + ending (2:15–2:40).
+// Scene 7 — Red flags + ending (1:52–2:17). Each RUN tag lands on a spoken
+// "run"; the final tap is on "withdraw" and the screen only says Pending on
+// the spoken "pending", then cut to black.
 // Three red flags with "RUN" tags → "CHECK FIRST: SEC 0800 100 065" →
 // a hand with the app: someone taps withdraw… Pending… cut to black.
 import React from "react";
@@ -11,10 +13,13 @@ import { alpha } from "../lib/color";
 import { useTheme } from "../lib/theme-context";
 import { sceneFrames } from "../config/timeline";
 
-const FLAGS_EXIT = 424;
-const CHECK = 434;
-const CHECK_EXIT = 552;
-const PHONE_IN = 560;
+const FLAGS_EXIT = 388;
+const CHECK = 398;
+const CHECK_EXIT = 532;
+const PHONE_IN = 538;
+/** Tap on "withdraw", Pending on "pending" (relative to PHONE_IN). */
+const FINAL_TAP = 99;
+const FINAL_PENDING = 180;
 /** Frames from the end of the scene where we hard-cut to black. */
 export const BLACK_TAIL = 15;
 
@@ -37,9 +42,9 @@ export const Scene7RedFlags: React.FC = () => {
             fontSize={86}
             exitAt={FLAGS_EXIT}
             items={[
-              { label: "GUARANTEED\nHIGH RETURNS", at: 66, tag: "RUN", tagAt: 160 },
-              { label: "EARN BY\nRECRUITING", at: 196, tag: "RUN", tagAt: 290 },
-              { label: "NOT SEC\nLICENSED", at: 316, tag: "RUN", tagAt: 404 },
+              { label: "GUARANTEED\nHIGH RETURNS", at: 66, tag: "RUN", tagAt: 150 },
+              { label: "EARN BY\nRECRUITING", at: 176, tag: "RUN", tagAt: 245 },
+              { label: "NOT SEC\nLICENSED", at: 268, tag: "RUN", tagAt: 346 },
             ]}
           />
         </div>
@@ -60,7 +65,7 @@ export const Scene7RedFlags: React.FC = () => {
         {/* Final phone */}
         <Sequence from={PHONE_IN} layout="none">
           <AbsoluteFill style={{ alignItems: "center", top: 170 + (1 - phoneIn) * 1200 }}>
-            <HandPhone width={620} phone={{ balanceFrom: 2000, balanceTo: 2000, taps: [118] }} />
+            <HandPhone width={620} phone={{ balanceFrom: 2000, balanceTo: 2000, taps: [FINAL_TAP], pendingAt: FINAL_PENDING }} />
           </AbsoluteFill>
         </Sequence>
       </SceneFrame>

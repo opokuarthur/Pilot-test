@@ -1,4 +1,5 @@
-// Scene 4 — The list (1:05–1:15). StampGrid: 23 generic app icons get a
+// Scene 4 — The list (1:04–1:12). Stamps start on "the SEC has named" and the
+// counter lands on 23 as "twenty-three" is spoken. StampGrid: 23 generic app icons get a
 // "NOT LICENSED" stamp each, faster and faster; the counter lands on 23.
 import React from "react";
 import { AbsoluteFill } from "remotion";
@@ -21,7 +22,7 @@ export const Scene4List: React.FC = () => {
         }}
       />
       <AbsoluteFill style={{ alignItems: "center", top: 200 }}>
-        <StampGrid count={23} cols={5} iconSize={140} gap={26} appearAt={4} stampStart={50} stampEnd={232} />
+        <StampGrid count={23} cols={5} iconSize={140} gap={26} appearAt={4} stampStart={56} stampEnd={128} />
       </AbsoluteFill>
     </SceneFrame>
   );

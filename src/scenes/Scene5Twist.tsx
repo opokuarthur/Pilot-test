@@ -1,4 +1,6 @@
-// Scene 5 — The twist (1:15–1:50).
+// Scene 5 — The twist (1:12–1:38). Beats follow the voiceover: riffle lands on
+// "2018", MENZGOLD on "Menzgold", shutters on "locked out", riffle lands on
+// "2015", DKM on "DKM", counters on "claims" / "cedis", outro on "Different names".
 //   A  0–200    Big split-flap calendar shows 2026, "REWIND" riffles to 2018,
 //               then the calendar shrinks to the top.
 //   B  200–510  2018: upscale gold office rises, "MENZGOLD" slams, shutters slam
@@ -19,16 +21,19 @@ import { useTheme } from "../lib/theme-context";
 import { sceneFrames } from "../config/timeline";
 import { VIDEO } from "../config/video";
 
-const FLIP_2018 = 165;
-const FLIP_2015 = 515;
+const FLIP_2018 = 98;
+const FLIP_2015 = 394;
 const FLIP_FRAMES = 40;
-const SHRINK = 208;
-const B_IN = 214;
-const SHUTTERS = 286;
-const B_OUT = 505;
-const C_IN = 548;
-const OUTRO = 862;
-const SAME_STORY = 930;
+const SHRINK = 150;
+const B_IN = 156;
+const SHUTTERS = 240;
+const B_OUT = 378;
+const C_IN = 456;
+const DKM_EXIT = 498;
+const CLAIMS = 506;
+const MONEY = 582;
+const OUTRO = 672;
+const SAME_STORY = 716;
 
 const clamp = { extrapolateLeft: "clamp", extrapolateRight: "clamp" } as const;
 
@@ -95,13 +100,13 @@ export const Scene5Twist: React.FC = () => {
         <TextSlam text="MENZGOLD" at={B_IN + 4} exitAt={B_OUT} fontSize={150} color={colors.gold} />
       </div>
       <div style={{ position: "absolute", left: 0, right: 0, top: 410, display: "flex", justifyContent: "center" }}>
-        <TextSlam text="DKM" at={C_IN + 4} exitAt={638} fontSize={160} color={colors.gold} />
+        <TextSlam text="DKM" at={C_IN + 4} exitAt={DKM_EXIT} fontSize={160} color={colors.gold} />
       </div>
       <div style={{ position: "absolute", left: 0, right: 0, top: 405, display: "flex", justifyContent: "center" }}>
-        <TextSlam text="" count={{ from: 0, to: 99858, frames: 45, suffix: " CLAIMS" }} at={644} exitAt={OUTRO} fontSize={112} color={colors.cream} />
+        <TextSlam text="" count={{ from: 0, to: 99858, frames: 45, suffix: " CLAIMS" }} at={CLAIMS} exitAt={OUTRO} fontSize={112} color={colors.cream} />
       </div>
       <div style={{ position: "absolute", left: 0, right: 0, top: 545, display: "flex", justifyContent: "center" }}>
-        <TextSlam text="" count={{ from: 0, to: 502, frames: 40, prefix: "GH₵", suffix: "M" }} at={746} exitAt={OUTRO} fontSize={130} color={colors.gold} />
+        <TextSlam text="" count={{ from: 0, to: 502, frames: 40, prefix: "GH₵", suffix: "M" }} at={MONEY} exitAt={OUTRO} fontSize={130} color={colors.gold} />
       </div>
 
       {/* Calendar (above the sets) */}

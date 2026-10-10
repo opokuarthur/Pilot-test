@@ -1,0 +1,1754 @@
+[
+{
+"chunk": 0,
+"word": "you",
+"start": 0.0,
+"end": 0.2
+},
+{
+"chunk": 0,
+"word": "put",
+"start": 0.2,
+"end": 0.46
+},
+{
+"chunk": 0,
+"word": "in",
+"start": 0.46,
+"end": 0.67
+},
+{
+"chunk": 0,
+"word": "five",
+"start": 0.67,
+"end": 1.04
+},
+{
+"chunk": 0,
+"word": "hundred",
+"start": 1.04,
+"end": 1.38
+},
+{
+"chunk": 0,
+"word": "see",
+"start": 1.38,
+"end": 1.58
+},
+{
+"chunk": 0,
+"word": "this",
+"start": 1.58,
+"end": 2.0
+},
+{
+"chunk": 1,
+"word": "the",
+"start": 2.89,
+"end": 3.08
+},
+{
+"chunk": 1,
+"word": "app",
+"start": 3.08,
+"end": 3.3
+},
+{
+"chunk": 1,
+"word": "shows",
+"start": 3.3,
+"end": 3.76
+},
+{
+"chunk": 1,
+"word": "you've",
+"start": 3.76,
+"end": 3.91
+},
+{
+"chunk": 1,
+"word": "made",
+"start": 3.91,
+"end": 4.22
+},
+{
+"chunk": 1,
+"word": "two",
+"start": 4.22,
+"end": 4.46
+},
+{
+"chunk": 1,
+"word": "thousand",
+"start": 4.46,
+"end": 5.13
+},
+{
+"chunk": 2,
+"word": "you",
+"start": 6.01,
+"end": 6.15
+},
+{
+"chunk": 2,
+"word": "tap",
+"start": 6.15,
+"end": 6.46
+},
+{
+"chunk": 2,
+"word": "withdraw",
+"start": 6.46,
+"end": 7.34
+},
+{
+"chunk": 2,
+"word": "and",
+"start": 7.75,
+"end": 8.37
+},
+{
+"chunk": 2,
+"word": "nothing",
+"start": 8.37,
+"end": 8.92
+},
+{
+"chunk": 3,
+"word": "pending",
+"start": 10.03,
+"end": 10.51
+},
+{
+"chunk": 3,
+"word": "pending",
+"start": 11.25,
+"end": 11.86
+},
+{
+"chunk": 3,
+"word": "pending",
+"start": 12.5,
+"end": 13.07
+},
+{
+"chunk": 4,
+"word": "if",
+"start": 14.14,
+"end": 14.29
+},
+{
+"chunk": 4,
+"word": "this",
+"start": 14.29,
+"end": 14.53
+},
+{
+"chunk": 4,
+"word": "happened",
+"start": 14.53,
+"end": 14.88
+},
+{
+"chunk": 4,
+"word": "to",
+"start": 14.88,
+"end": 15.0
+},
+{
+"chunk": 4,
+"word": "you",
+"start": 15.0,
+"end": 15.2
+},
+{
+"chunk": 4,
+"word": "this",
+"start": 15.2,
+"end": 15.45
+},
+{
+"chunk": 4,
+"word": "year",
+"start": 15.45,
+"end": 15.81
+},
+{
+"chunk": 5,
+"word": "you're",
+"start": 16.23,
+"end": 16.37
+},
+{
+"chunk": 5,
+"word": "not",
+"start": 16.37,
+"end": 16.6
+},
+{
+"chunk": 5,
+"word": "alone",
+"start": 16.6,
+"end": 17.04
+},
+{
+"chunk": 6,
+"word": "yep",
+"start": 18.43,
+"end": 18.67
+},
+{
+"chunk": 6,
+"word": "bit",
+"start": 18.67,
+"end": 18.87
+},
+{
+"chunk": 6,
+"word": "looked",
+"start": 18.87,
+"end": 19.14
+},
+{
+"chunk": 6,
+"word": "like",
+"start": 19.14,
+"end": 19.33
+},
+{
+"chunk": 6,
+"word": "a",
+"start": 19.33,
+"end": 19.39
+},
+{
+"chunk": 6,
+"word": "real",
+"start": 19.39,
+"end": 19.89
+},
+{
+"chunk": 6,
+"word": "crypto",
+"start": 19.89,
+"end": 20.26
+},
+{
+"chunk": 6,
+"word": "exchange",
+"start": 20.26,
+"end": 20.87
+},
+{
+"chunk": 7,
+"word": "charts",
+"start": 21.19,
+"end": 22.01
+},
+{
+"chunk": 7,
+"word": "profits",
+"start": 22.01,
+"end": 22.87
+},
+{
+"chunk": 7,
+"word": "a",
+"start": 22.87,
+"end": 22.94
+},
+{
+"chunk": 7,
+"word": "community",
+"start": 22.94,
+"end": 23.66
+},
+{
+"chunk": 8,
+"word": "then",
+"start": 24.63,
+"end": 24.93
+},
+{
+"chunk": 8,
+"word": "in",
+"start": 24.93,
+"end": 25.14
+},
+{
+"chunk": 8,
+"word": "july",
+"start": 25.14,
+"end": 25.76
+},
+{
+"chunk": 8,
+"word": "ghana's",
+"start": 26.1,
+"end": 26.61
+},
+{
+"chunk": 8,
+"word": "s",
+"start": 26.61,
+"end": 26.89
+},
+{
+"chunk": 8,
+"word": "e",
+"start": 26.89,
+"end": 27.03
+},
+{
+"chunk": 8,
+"word": "c",
+"start": 27.03,
+"end": 27.36
+},
+{
+"chunk": 8,
+"word": "warned",
+"start": 27.36,
+"end": 27.88
+},
+{
+"chunk": 8,
+"word": "the",
+"start": 27.88,
+"end": 27.97
+},
+{
+"chunk": 8,
+"word": "public",
+"start": 27.97,
+"end": 28.54
+},
+{
+"chunk": 9,
+"word": "yep",
+"start": 29.5,
+"end": 29.74
+},
+{
+"chunk": 9,
+"word": "bit",
+"start": 29.74,
+"end": 30.03
+},
+{
+"chunk": 9,
+"word": "is",
+"start": 30.03,
+"end": 30.32
+},
+{
+"chunk": 9,
+"word": "not",
+"start": 30.32,
+"end": 30.74
+},
+{
+"chunk": 9,
+"word": "licensed",
+"start": 30.74,
+"end": 31.43
+},
+{
+"chunk": 10,
+"word": "days",
+"start": 32.37,
+"end": 32.74
+},
+{
+"chunk": 10,
+"word": "later",
+"start": 32.74,
+"end": 33.26
+},
+{
+"chunk": 10,
+"word": "investors",
+"start": 33.61,
+"end": 34.22
+},
+{
+"chunk": 10,
+"word": "started",
+"start": 34.22,
+"end": 34.64
+},
+{
+"chunk": 10,
+"word": "reporting",
+"start": 34.64,
+"end": 35.19
+},
+{
+"chunk": 10,
+"word": "the",
+"start": 35.19,
+"end": 35.28
+},
+{
+"chunk": 10,
+"word": "same",
+"start": 35.28,
+"end": 35.68
+},
+{
+"chunk": 10,
+"word": "thing",
+"start": 35.68,
+"end": 36.12
+},
+{
+"chunk": 11,
+"word": "withdrawals",
+"start": 37.55,
+"end": 38.46
+},
+{
+"chunk": 11,
+"word": "frozen",
+"start": 38.46,
+"end": 39.26
+},
+{
+"chunk": 12,
+"word": "then",
+"start": 40.53,
+"end": 40.89
+},
+{
+"chunk": 12,
+"word": "came",
+"start": 40.89,
+"end": 41.37
+},
+{
+"chunk": 12,
+"word": "c",
+"start": 41.96,
+"end": 42.34
+},
+{
+"chunk": 12,
+"word": "w",
+"start": 42.34,
+"end": 42.81
+},
+{
+"chunk": 12,
+"word": "p",
+"start": 42.81,
+"end": 43.04
+},
+{
+"chunk": 12,
+"word": "c",
+"start": 43.04,
+"end": 43.43
+},
+{
+"chunk": 13,
+"word": "you",
+"start": 44.53,
+"end": 44.69
+},
+{
+"chunk": 13,
+"word": "probably",
+"start": 44.69,
+"end": 45.28
+},
+{
+"chunk": 13,
+"word": "didn't",
+"start": 45.28,
+"end": 45.56
+},
+{
+"chunk": 13,
+"word": "hear",
+"start": 45.56,
+"end": 45.86
+},
+{
+"chunk": 13,
+"word": "about",
+"start": 45.86,
+"end": 46.16
+},
+{
+"chunk": 13,
+"word": "it",
+"start": 46.16,
+"end": 46.26
+},
+{
+"chunk": 13,
+"word": "from",
+"start": 46.26,
+"end": 46.49
+},
+{
+"chunk": 13,
+"word": "an",
+"start": 46.49,
+"end": 46.6
+},
+{
+"chunk": 13,
+"word": "ad",
+"start": 46.6,
+"end": 47.01
+},
+{
+"chunk": 14,
+"word": "you",
+"start": 47.97,
+"end": 48.12
+},
+{
+"chunk": 14,
+"word": "heard",
+"start": 48.12,
+"end": 48.29
+},
+{
+"chunk": 14,
+"word": "about",
+"start": 48.29,
+"end": 48.61
+},
+{
+"chunk": 14,
+"word": "it",
+"start": 48.61,
+"end": 48.72
+},
+{
+"chunk": 14,
+"word": "from",
+"start": 48.72,
+"end": 48.94
+},
+{
+"chunk": 14,
+"word": "a",
+"start": 48.94,
+"end": 48.99
+},
+{
+"chunk": 14,
+"word": "friend",
+"start": 48.99,
+"end": 49.84
+},
+{
+"chunk": 15,
+"word": "a",
+"start": 49.84,
+"end": 49.9
+},
+{
+"chunk": 15,
+"word": "family",
+"start": 49.9,
+"end": 50.33
+},
+{
+"chunk": 15,
+"word": "member",
+"start": 50.33,
+"end": 50.91
+},
+{
+"chunk": 15,
+"word": "someone",
+"start": 51.13,
+"end": 51.49
+},
+{
+"chunk": 15,
+"word": "you",
+"start": 51.49,
+"end": 51.62
+},
+{
+"chunk": 15,
+"word": "trust",
+"start": 51.62,
+"end": 52.17
+},
+{
+"chunk": 16,
+"word": "that's",
+"start": 52.47,
+"end": 52.82
+},
+{
+"chunk": 16,
+"word": "how",
+"start": 52.82,
+"end": 52.99
+},
+{
+"chunk": 16,
+"word": "it",
+"start": 52.99,
+"end": 53.08
+},
+{
+"chunk": 16,
+"word": "spread",
+"start": 53.08,
+"end": 53.53
+},
+{
+"chunk": 17,
+"word": "now",
+"start": 54.61,
+"end": 54.78
+},
+{
+"chunk": 17,
+"word": "reports",
+"start": 54.78,
+"end": 55.27
+},
+{
+"chunk": 17,
+"word": "say",
+"start": 55.27,
+"end": 55.69
+},
+{
+"chunk": 17,
+"word": "thousands",
+"start": 55.88,
+"end": 56.37
+},
+{
+"chunk": 17,
+"word": "of",
+"start": 56.37,
+"end": 56.49
+},
+{
+"chunk": 17,
+"word": "ghana",
+"start": 56.49,
+"end": 56.85
+},
+{
+"chunk": 17,
+"word": "ions",
+"start": 56.85,
+"end": 57.05
+},
+{
+"chunk": 18,
+"word": "may",
+"start": 57.05,
+"end": 57.16
+},
+{
+"chunk": 18,
+"word": "have",
+"start": 57.16,
+"end": 57.34
+},
+{
+"chunk": 18,
+"word": "lost",
+"start": 57.34,
+"end": 57.64
+},
+{
+"chunk": 18,
+"word": "millions",
+"start": 57.64,
+"end": 58.31
+},
+{
+"chunk": 18,
+"word": "of",
+"start": 58.31,
+"end": 58.38
+},
+{
+"chunk": 18,
+"word": "see",
+"start": 58.38,
+"end": 58.79
+},
+{
+"chunk": 18,
+"word": "this",
+"start": 58.79,
+"end": 59.01
+},
+{
+"chunk": 19,
+"word": "and",
+"start": 59.38,
+"end": 59.53
+},
+{
+"chunk": 19,
+"word": "the",
+"start": 59.53,
+"end": 59.66
+},
+{
+"chunk": 19,
+"word": "s",
+"start": 59.66,
+"end": 59.87
+},
+{
+"chunk": 19,
+"word": "e",
+"start": 59.87,
+"end": 60.04
+},
+{
+"chunk": 19,
+"word": "c",
+"start": 60.04,
+"end": 60.48
+},
+{
+"chunk": 19,
+"word": "is",
+"start": 60.48,
+"end": 60.63
+},
+{
+"chunk": 19,
+"word": "bringing",
+"start": 60.63,
+"end": 61.02
+},
+{
+"chunk": 19,
+"word": "in",
+"start": 61.02,
+"end": 61.18
+},
+{
+"chunk": 20,
+"word": "the",
+"start": 61.18,
+"end": 61.27
+},
+{
+"chunk": 20,
+"word": "cyber",
+"start": 61.27,
+"end": 61.64
+},
+{
+"chunk": 20,
+"word": "security",
+"start": 61.64,
+"end": 62.19
+},
+{
+"chunk": 20,
+"word": "authority",
+"start": 62.19,
+"end": 62.9
+},
+{
+"chunk": 21,
+"word": "and",
+"start": 64.11,
+"end": 64.23
+},
+{
+"chunk": 21,
+"word": "it's",
+"start": 64.23,
+"end": 64.36
+},
+{
+"chunk": 21,
+"word": "not",
+"start": 64.36,
+"end": 64.55
+},
+{
+"chunk": 21,
+"word": "just",
+"start": 64.55,
+"end": 64.83
+},
+{
+"chunk": 21,
+"word": "two",
+"start": 64.83,
+"end": 65.09
+},
+{
+"chunk": 21,
+"word": "apps",
+"start": 65.09,
+"end": 65.53
+},
+{
+"chunk": 22,
+"word": "the",
+"start": 65.94,
+"end": 66.01
+},
+{
+"chunk": 22,
+"word": "s",
+"start": 66.01,
+"end": 66.3
+},
+{
+"chunk": 22,
+"word": "e",
+"start": 66.3,
+"end": 66.39
+},
+{
+"chunk": 22,
+"word": "c",
+"start": 66.39,
+"end": 66.62
+},
+{
+"chunk": 22,
+"word": "has",
+"start": 66.62,
+"end": 66.85
+},
+{
+"chunk": 22,
+"word": "named",
+"start": 66.85,
+"end": 67.2
+},
+{
+"chunk": 22,
+"word": "twenty",
+"start": 67.2,
+"end": 67.72
+},
+{
+"chunk": 22,
+"word": "three",
+"start": 67.72,
+"end": 68.09
+},
+{
+"chunk": 22,
+"word": "platforms",
+"start": 68.09,
+"end": 68.74
+},
+{
+"chunk": 23,
+"word": "operating",
+"start": 68.74,
+"end": 69.3
+},
+{
+"chunk": 23,
+"word": "in",
+"start": 69.3,
+"end": 69.41
+},
+{
+"chunk": 23,
+"word": "ghana",
+"start": 69.41,
+"end": 69.81
+},
+{
+"chunk": 23,
+"word": "without",
+"start": 69.81,
+"end": 70.4
+},
+{
+"chunk": 23,
+"word": "a",
+"start": 70.4,
+"end": 70.48
+},
+{
+"chunk": 23,
+"word": "license",
+"start": 70.48,
+"end": 71.17
+},
+{
+"chunk": 24,
+"word": "but",
+"start": 72.18,
+"end": 72.31
+},
+{
+"chunk": 24,
+"word": "here's",
+"start": 72.31,
+"end": 72.6
+},
+{
+"chunk": 24,
+"word": "the",
+"start": 72.6,
+"end": 72.68
+},
+{
+"chunk": 24,
+"word": "thing",
+"start": 72.68,
+"end": 73.11
+},
+{
+"chunk": 25,
+"word": "ghana",
+"start": 73.59,
+"end": 73.87
+},
+{
+"chunk": 25,
+"word": "has",
+"start": 73.87,
+"end": 74.08
+},
+{
+"chunk": 25,
+"word": "seen",
+"start": 74.08,
+"end": 74.41
+},
+{
+"chunk": 25,
+"word": "this",
+"start": 74.41,
+"end": 74.6
+},
+{
+"chunk": 25,
+"word": "movie",
+"start": 74.6,
+"end": 74.87
+},
+{
+"chunk": 25,
+"word": "before",
+"start": 74.87,
+"end": 75.23
+},
+{
+"chunk": 26,
+"word": "in",
+"start": 75.81,
+"end": 75.93
+},
+{
+"chunk": 26,
+"word": "twenty",
+"start": 75.93,
+"end": 76.3
+},
+{
+"chunk": 26,
+"word": "eighteen",
+"start": 76.3,
+"end": 76.88
+},
+{
+"chunk": 26,
+"word": "mens",
+"start": 77.27,
+"end": 77.55
+},
+{
+"chunk": 26,
+"word": "gold",
+"start": 77.55,
+"end": 77.94
+},
+{
+"chunk": 27,
+"word": "thousands",
+"start": 78.85,
+"end": 79.45
+},
+{
+"chunk": 27,
+"word": "of",
+"start": 79.45,
+"end": 79.59
+},
+{
+"chunk": 27,
+"word": "people",
+"start": 79.59,
+"end": 80.04
+},
+{
+"chunk": 27,
+"word": "locked",
+"start": 80.04,
+"end": 80.52
+},
+{
+"chunk": 27,
+"word": "out",
+"start": 80.52,
+"end": 80.72
+},
+{
+"chunk": 27,
+"word": "of",
+"start": 80.72,
+"end": 80.85
+},
+{
+"chunk": 27,
+"word": "their",
+"start": 80.85,
+"end": 80.98
+},
+{
+"chunk": 27,
+"word": "money",
+"start": 80.98,
+"end": 81.41
+},
+{
+"chunk": 28,
+"word": "the",
+"start": 81.93,
+"end": 82.02
+},
+{
+"chunk": 28,
+"word": "case",
+"start": 82.02,
+"end": 82.4
+},
+{
+"chunk": 28,
+"word": "is",
+"start": 82.4,
+"end": 82.54
+},
+{
+"chunk": 28,
+"word": "still",
+"start": 82.54,
+"end": 82.92
+},
+{
+"chunk": 28,
+"word": "in",
+"start": 82.92,
+"end": 83.06
+},
+{
+"chunk": 28,
+"word": "court",
+"start": 83.06,
+"end": 83.36
+},
+{
+"chunk": 28,
+"word": "today",
+"start": 83.36,
+"end": 83.79
+},
+{
+"chunk": 29,
+"word": "before",
+"start": 84.69,
+"end": 85.05
+},
+{
+"chunk": 29,
+"word": "that",
+"start": 85.05,
+"end": 85.74
+},
+{
+"chunk": 29,
+"word": "in",
+"start": 85.74,
+"end": 85.89
+},
+{
+"chunk": 29,
+"word": "twenty",
+"start": 85.89,
+"end": 86.23
+},
+{
+"chunk": 29,
+"word": "fifteen",
+"start": 86.23,
+"end": 86.82
+},
+{
+"chunk": 29,
+"word": "d",
+"start": 87.32,
+"end": 87.51
+},
+{
+"chunk": 29,
+"word": "k",
+"start": 87.51,
+"end": 87.77
+},
+{
+"chunk": 29,
+"word": "m",
+"start": 87.77,
+"end": 88.09
+},
+{
+"chunk": 30,
+"word": "nearly",
+"start": 88.52,
+"end": 88.96
+},
+{
+"chunk": 30,
+"word": "a",
+"start": 88.96,
+"end": 89.04
+},
+{
+"chunk": 30,
+"word": "hundred",
+"start": 89.04,
+"end": 89.62
+},
+{
+"chunk": 30,
+"word": "thousand",
+"start": 89.62,
+"end": 90.21
+},
+{
+"chunk": 30,
+"word": "claims",
+"start": 90.21,
+"end": 90.81
+},
+{
+"chunk": 31,
+"word": "over",
+"start": 91.14,
+"end": 91.39
+},
+{
+"chunk": 31,
+"word": "five",
+"start": 91.39,
+"end": 91.84
+},
+{
+"chunk": 31,
+"word": "hundred",
+"start": 91.84,
+"end": 92.27
+},
+{
+"chunk": 31,
+"word": "million",
+"start": 92.27,
+"end": 92.78
+},
+{
+"chunk": 31,
+"word": "see",
+"start": 92.78,
+"end": 93.16
+},
+{
+"chunk": 31,
+"word": "this",
+"start": 93.16,
+"end": 93.37
+},
+{
+"chunk": 32,
+"word": "different",
+"start": 94.4,
+"end": 94.83
+},
+{
+"chunk": 32,
+"word": "names",
+"start": 94.83,
+"end": 95.42
+},
+{
+"chunk": 33,
+"word": "same",
+"start": 95.79,
+"end": 96.15
+},
+{
+"chunk": 33,
+"word": "story",
+"start": 96.15,
+"end": 96.73
+},
+{
+"chunk": 34,
+"word": "it's",
+"start": 97.88,
+"end": 98.05
+},
+{
+"chunk": 34,
+"word": "called",
+"start": 98.05,
+"end": 98.56
+},
+{
+"chunk": 34,
+"word": "a",
+"start": 98.56,
+"end": 98.63
+},
+{
+"chunk": 34,
+"word": "ponzi",
+"start": 98.63,
+"end": 99.17
+},
+{
+"chunk": 34,
+"word": "scheme",
+"start": 99.17,
+"end": 99.58
+},
+{
+"chunk": 35,
+"word": "your",
+"start": 100.11,
+"end": 100.4
+},
+{
+"chunk": 35,
+"word": "profit",
+"start": 100.4,
+"end": 101.35
+},
+{
+"chunk": 35,
+"word": "isn't",
+"start": 101.35,
+"end": 101.67
+},
+{
+"chunk": 35,
+"word": "profit",
+"start": 101.67,
+"end": 102.23
+},
+{
+"chunk": 36,
+"word": "it's",
+"start": 102.65,
+"end": 102.8
+},
+{
+"chunk": 36,
+"word": "the",
+"start": 102.8,
+"end": 102.89
+},
+{
+"chunk": 36,
+"word": "money",
+"start": 102.89,
+"end": 103.2
+},
+{
+"chunk": 36,
+"word": "of",
+"start": 103.2,
+"end": 103.31
+},
+{
+"chunk": 36,
+"word": "the",
+"start": 103.31,
+"end": 103.41
+},
+{
+"chunk": 36,
+"word": "next",
+"start": 103.41,
+"end": 103.74
+},
+{
+"chunk": 36,
+"word": "person",
+"start": 103.74,
+"end": 104.11
+},
+{
+"chunk": 36,
+"word": "who",
+"start": 104.11,
+"end": 104.27
+},
+{
+"chunk": 36,
+"word": "joined",
+"start": 104.27,
+"end": 104.72
+},
+{
+"chunk": 37,
+"word": "it",
+"start": 105.22,
+"end": 105.3
+},
+{
+"chunk": 37,
+"word": "works",
+"start": 105.3,
+"end": 105.91
+},
+{
+"chunk": 38,
+"word": "until",
+"start": 106.33,
+"end": 106.64
+},
+{
+"chunk": 38,
+"word": "new",
+"start": 106.64,
+"end": 106.92
+},
+{
+"chunk": 38,
+"word": "people",
+"start": 106.92,
+"end": 107.24
+},
+{
+"chunk": 38,
+"word": "stop",
+"start": 107.24,
+"end": 107.5
+},
+{
+"chunk": 38,
+"word": "coming",
+"start": 107.5,
+"end": 107.93
+},
+{
+"chunk": 39,
+"word": "then",
+"start": 108.47,
+"end": 108.62
+},
+{
+"chunk": 39,
+"word": "the",
+"start": 108.62,
+"end": 108.72
+},
+{
+"chunk": 39,
+"word": "last",
+"start": 108.72,
+"end": 109.07
+},
+{
+"chunk": 39,
+"word": "people",
+"start": 109.07,
+"end": 109.42
+},
+{
+"chunk": 39,
+"word": "in",
+"start": 109.42,
+"end": 109.76
+},
+{
+"chunk": 40,
+"word": "lose",
+"start": 109.76,
+"end": 110.14
+},
+{
+"chunk": 40,
+"word": "everything",
+"start": 110.3,
+"end": 110.9
+},
+{
+"chunk": 41,
+"word": "so",
+"start": 112.18,
+"end": 112.37
+},
+{
+"chunk": 41,
+"word": "before",
+"start": 112.37,
+"end": 112.82
+},
+{
+"chunk": 41,
+"word": "you",
+"start": 112.82,
+"end": 112.99
+},
+{
+"chunk": 41,
+"word": "invest",
+"start": 112.99,
+"end": 113.62
+},
+{
+"chunk": 42,
+"word": "if",
+"start": 114.14,
+"end": 114.24
+},
+{
+"chunk": 42,
+"word": "the",
+"start": 114.24,
+"end": 114.35
+},
+{
+"chunk": 42,
+"word": "returns",
+"start": 114.35,
+"end": 114.82
+},
+{
+"chunk": 42,
+"word": "are",
+"start": 114.82,
+"end": 114.86
+},
+{
+"chunk": 42,
+"word": "guaranteed",
+"start": 114.86,
+"end": 115.51
+},
+{
+"chunk": 42,
+"word": "and",
+"start": 115.51,
+"end": 115.79
+},
+{
+"chunk": 42,
+"word": "too",
+"start": 115.79,
+"end": 116.08
+},
+{
+"chunk": 42,
+"word": "high",
+"start": 116.08,
+"end": 116.49
+},
+{
+"chunk": 42,
+"word": "run",
+"start": 116.95,
+"end": 117.38
+},
+{
+"chunk": 43,
+"word": "if",
+"start": 117.81,
+"end": 117.92
+},
+{
+"chunk": 43,
+"word": "you",
+"start": 117.92,
+"end": 118.11
+},
+{
+"chunk": 43,
+"word": "earn",
+"start": 118.11,
+"end": 118.36
+},
+{
+"chunk": 43,
+"word": "by",
+"start": 118.36,
+"end": 118.51
+},
+{
+"chunk": 43,
+"word": "bringing",
+"start": 118.51,
+"end": 118.87
+},
+{
+"chunk": 43,
+"word": "people",
+"start": 118.87,
+"end": 119.22
+},
+{
+"chunk": 43,
+"word": "in",
+"start": 119.22,
+"end": 119.62
+},
+{
+"chunk": 43,
+"word": "run",
+"start": 120.11,
+"end": 120.57
+},
+{
+"chunk": 44,
+"word": "if",
+"start": 120.87,
+"end": 121.05
+},
+{
+"chunk": 44,
+"word": "it's",
+"start": 121.05,
+"end": 121.21
+},
+{
+"chunk": 44,
+"word": "not",
+"start": 121.21,
+"end": 121.42
+},
+{
+"chunk": 44,
+"word": "licensed",
+"start": 121.42,
+"end": 121.96
+},
+{
+"chunk": 44,
+"word": "by",
+"start": 121.96,
+"end": 122.12
+},
+{
+"chunk": 44,
+"word": "the",
+"start": 122.12,
+"end": 122.27
+},
+{
+"chunk": 44,
+"word": "s",
+"start": 122.27,
+"end": 122.49
+},
+{
+"chunk": 44,
+"word": "e",
+"start": 122.49,
+"end": 122.58
+},
+{
+"chunk": 44,
+"word": "c",
+"start": 122.58,
+"end": 122.99
+},
+{
+"chunk": 44,
+"word": "run",
+"start": 123.47,
+"end": 123.84
+},
+{
+"chunk": 45,
+"word": "check",
+"start": 125.17,
+"end": 125.45
+},
+{
+"chunk": 45,
+"word": "first",
+"start": 125.45,
+"end": 125.92
+},
+{
+"chunk": 45,
+"word": "and",
+"start": 126.36,
+"end": 126.5
+},
+{
+"chunk": 45,
+"word": "the",
+"start": 126.5,
+"end": 126.66
+},
+{
+"chunk": 45,
+"word": "s",
+"start": 126.66,
+"end": 126.85
+},
+{
+"chunk": 45,
+"word": "e",
+"start": 126.85,
+"end": 127.05
+},
+{
+"chunk": 45,
+"word": "c",
+"start": 127.05,
+"end": 127.41
+},
+{
+"chunk": 45,
+"word": "has",
+"start": 127.41,
+"end": 127.68
+},
+{
+"chunk": 45,
+"word": "a",
+"start": 127.68,
+"end": 127.73
+},
+{
+"chunk": 45,
+"word": "free",
+"start": 127.73,
+"end": 128.09
+},
+{
+"chunk": 45,
+"word": "line",
+"start": 128.09,
+"end": 128.34
+},
+{
+"chunk": 45,
+"word": "for",
+"start": 128.34,
+"end": 128.48
+},
+{
+"chunk": 45,
+"word": "that",
+"start": 128.48,
+"end": 128.88
+},
+{
+"chunk": 46,
+"word": "because",
+"start": 129.91,
+"end": 130.26
+},
+{
+"chunk": 46,
+"word": "somewhere",
+"start": 130.26,
+"end": 130.82
+},
+{
+"chunk": 46,
+"word": "right",
+"start": 130.82,
+"end": 131.04
+},
+{
+"chunk": 46,
+"word": "now",
+"start": 131.04,
+"end": 131.69
+},
+{
+"chunk": 47,
+"word": "someone",
+"start": 131.69,
+"end": 132.18
+},
+{
+"chunk": 47,
+"word": "is",
+"start": 132.18,
+"end": 132.31
+},
+{
+"chunk": 47,
+"word": "about",
+"start": 132.31,
+"end": 132.57
+},
+{
+"chunk": 47,
+"word": "to",
+"start": 132.57,
+"end": 132.67
+},
+{
+"chunk": 47,
+"word": "tap",
+"start": 132.67,
+"end": 133.05
+},
+{
+"chunk": 47,
+"word": "withdraw",
+"start": 133.05,
+"end": 133.89
+},
+{
+"chunk": 48,
+"word": "and",
+"start": 134.39,
+"end": 134.49
+},
+{
+"chunk": 48,
+"word": "it's",
+"start": 134.49,
+"end": 134.65
+},
+{
+"chunk": 48,
+"word": "going",
+"start": 134.65,
+"end": 134.88
+},
+{
+"chunk": 48,
+"word": "to",
+"start": 134.88,
+"end": 135.01
+},
+{
+"chunk": 48,
+"word": "say",
+"start": 135.01,
+"end": 135.2
+}
+]

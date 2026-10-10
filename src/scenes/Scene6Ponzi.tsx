@@ -1,4 +1,6 @@
-// Scene 6 — How it works (1:50–2:15). "PONZI SCHEME" slams in as a header,
+// Scene 6 — How it works (1:38–1:52). Build on "your profit", coins on "the
+// next person who joined", stall on "stop coming", empty row on "the last
+// people in", collapse on "lose everything". "PONZI SCHEME" slams in as a header,
 // then the PyramidCollapse plays: build → money flows up → no new people →
 // bottom row drops out → collapse. The header greys out with the collapse.
 import React from "react";
@@ -13,7 +15,7 @@ import { useTheme } from "../lib/theme-context";
 import { sceneFrames } from "../config/timeline";
 import { VIDEO } from "../config/video";
 
-const T = { buildAt: 36, flowAt: 140, stallAt: 398, emptyAt: 520, collapseAt: 586 };
+const T = { buildAt: 58, flowAt: 150, stallAt: 262, emptyAt: 326, collapseAt: 364 };
 
 export const Scene6Ponzi: React.FC = () => {
   const frame = useCurrentFrame();
@@ -30,7 +32,7 @@ export const Scene6Ponzi: React.FC = () => {
         </div>
       </ParallaxLayer>
       <div style={{ position: "absolute", left: 0, right: 0, top: 185, display: "flex", justifyContent: "center", filter: failFilter(fail) }}>
-        <TextSlam text="PONZI SCHEME" at={6} fontSize={150} highlight={{ PONZI: colors.gold }} />
+        <TextSlam text="PONZI SCHEME" at={28} fontSize={150} highlight={{ PONZI: colors.gold }} />
       </div>
     </SceneFrame>
   );
