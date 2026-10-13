@@ -116,8 +116,9 @@ export const BrandLogo: React.FC<BrandLogoProps> = ({ variant = "full", width, h
           </radialGradient>
         </defs>
         <rect width={200} height={200} fill="url(#squareGlow)" />
-        {/* Icon box scaled so the paper fills ~66% of the square, optically centred */}
-        <svg x={-18} y={-23} width={236} height={236} viewBox="0 0 200 200" overflow="visible">
+        {/* Icon box scaled so the paper's corners stay inside a circular crop
+            (profile photos are shown as circles), optically centred */}
+        <svg x={1} y={-4} width={198} height={198} viewBox="0 0 200 200" overflow="visible">
           <BrandIcon size={200} variant="half" showU {...icon} />
         </svg>
       </svg>
