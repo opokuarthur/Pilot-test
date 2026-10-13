@@ -5,7 +5,10 @@
 # →
 #   public/audio/ronaldo-vs-jesus-vo-mix.mp3          voice +4 dB through a limiter
 #                                                     (latency-compensated: timing unchanged)
-#   public/audio/ronaldo-vs-jesus-music.mp3           music extended to ~149 s, compressed,
+#   public/audio/ronaldo-vs-jesus-music.mp3           music extended to ~149 s, EQ'd for phone
+#                                                     speakers (less sub-bass, more mids/highs:
+#                                                     60% of the track's energy sat below 150 Hz,
+#                                                     which phones barely play), compressed,
 #                                                     normalised to -16 LUFS (the mix sets the level)
 # The music is extended with two beat-matched loop seams (found by comparing
 # the spectra around candidate jump points), each a short equal-power crossfade:
@@ -24,6 +27,7 @@ ffmpeg -v error -y -i "$A/the-mountain-trailer-cinematic.mp3" -filter_complex "\
 [0]atrim=86.252,asetpts=PTS-STARTPTS[c];\
 [a][b]acrossfade=d=0.25:c1=qsin:c2=qsin[ab];\
 [ab][c]acrossfade=d=0.3:c1=qsin:c2=qsin,\
+highpass=f=45,bass=g=-6:f=140,equalizer=f=1200:t=q:w=1.2:g=4,treble=g=5:f=3000,\
 acompressor=threshold=-20dB:ratio=3:attack=20:release=300:makeup=1,\
 loudnorm=I=-16:TP=-1.5:LRA=7[out]" -map "[out]" -ar 44100 -c:a libmp3lame -b:a 192k "$A/ronaldo-vs-jesus-music.mp3"
 for f in ronaldo-vs-jesus-vo-mix ronaldo-vs-jesus-music; do

@@ -19,8 +19,8 @@ export const RVJ_VOICE: VoiceConfig & { followOffset: number } = {
 export const RVJ_MUSIC: MusicConfig = {
   /** "The Mountain" (cinematic trailer), extended + compressed, normalised to -16 LUFS. */
   file: "audio/ronaldo-vs-jesus-music.mp3",
-  /** Kept low (about 21 dB under the voice) so it never competes with it. */
-  underVoice: 0.09,
-  sting: 0.22,
-  endCard: 0.11,
+  /** About 10 dB under the voice: clearly audible (also on phone speakers), still behind it. */
+  underVoice: 0.24,
+  sting: 0.45,
+  endCard: 0.26,
 };
