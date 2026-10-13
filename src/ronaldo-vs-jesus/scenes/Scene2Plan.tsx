@@ -1,4 +1,4 @@
-// Scene 2 — The plan (0:15–0:45).
+// Scene 2 — The plan (0:10–0:31). Beats follow the voiceover.
 // Plane cabin at night: the GOODBYE letter drops in; on "begged him to stay"
 // a hand pushes it back. "NEW COACH" slams; on "Jorge Jesus" his cutout
 // slides in with "JORGE JESUS — HEAD COACH" (neutral: no tint or effects),
@@ -17,17 +17,17 @@ import { rvjPushFrames } from "../timeline";
 import { PhotoMoment } from "../photos";
 import { PlaneCabin } from "../sets";
 
-const LETTER = 100; // "goodbye letter" (3.4 s)
-const PUSH = 228; // "begged him to stay" (7.6 s)
-const NEW_COACH = 308; // "the new coach" (10.2 s)
-const PHOTO = 402; // "Jorge Jesus" (13.4 s)
-const PHOTO_OUT = 522;
-const CABIN_OUT = [500, 530];
-const SHAKE = 536; // "Jesus came with a plan" (17.8 s)
-const BOARD = 580;
-const MATCH1 = 598; // "the first match" (19.8 s)
-const FINAL = 676; // "and the last one" (22.4 s)
-const SIMPLE = 740; // "Simple." (24.6 s)
+const LETTER = 128; // "goodbye letter"
+const PUSH = 232; // "begged him to stay"
+const NEW_COACH = 306; // "the new coach"
+const PHOTO = 364; // "Jorge Jesus"
+const PHOTO_OUT = 458;
+const CABIN_OUT = [440, 468];
+const SHAKE = 466; // "Jesus came with a plan"
+const BOARD = 492;
+const MATCH1 = 542; // "the first match"
+const FINAL = 576; // "and the last one"
+const SIMPLE = 604; // "Simple." 
 
 /** Handshake: the two silhouettes slide in from the sides; hands meet at x=540. */
 const Handshake: React.FC = () => {

@@ -26,7 +26,9 @@ import { RVJ_SCENES, RVJ_TOTAL_FRAMES, RvjSceneId, rvjFrames, rvjTimeline } from
 import { RVJ_SCENE_COMPONENTS } from "./ronaldo-vs-jesus/scenes";
 import { BrandedVideo, brandedDuration } from "./brand/BrandedVideo";
 import { WITHDRAWAL_PENDING_END_CARD, WithdrawalPendingSoundtrack } from "./WithdrawalPendingSoundtrack";
-import { VOICEOVER } from "./config/voiceover";
+import { SFX, VOICEOVER } from "./config/voiceover";
+import { Soundtrack } from "./components/Soundtrack";
+import { RVJ_MUSIC, RVJ_VOICE } from "./ronaldo-vs-jesus/audio";
 import { Watermark } from "./brand/Watermark";
 import { LogoSting, stingFrames } from "./brand/LogoSting";
 import { EndCard, endCardFrames } from "./brand/EndCard";
@@ -55,10 +57,26 @@ const FiveThousandPlatesBranded: React.FC<BrandedProps> = ({ watermark }) => (
     <FiveThousandPlates />
   </BrandedVideo>
 );
+const RVJ_END = { seconds: 5, lineAt: 4, followAt: Math.round(RVJ_VOICE.followOffset * VIDEO.fps) - 2 };
 const RonaldoVsJesusBranded: React.FC<BrandedProps> = ({ watermark }) => (
-  <BrandedVideo contentFrames={RVJ_TOTAL_FRAMES} watermark={watermark}>
-    <RonaldoVsJesus />
-  </BrandedVideo>
+  <AbsoluteFill>
+    <BrandedVideo
+      contentFrames={RVJ_TOTAL_FRAMES}
+      watermark={watermark}
+      endCardSeconds={RVJ_END.seconds}
+      endCard={{ lineAt: RVJ_END.lineAt, followAt: RVJ_END.followAt }}
+    >
+      <RonaldoVsJesus />
+    </BrandedVideo>
+    <Soundtrack
+      voice={RVJ_VOICE}
+      music={RVJ_MUSIC}
+      contentFrames={RVJ_TOTAL_FRAMES}
+      whooshAt={RVJ_SCENES.slice(1).map(({ id }) => rvjTimeline.sceneStart(id))}
+      whoosh={{ file: SFX.whoosh, volume: SFX.whooshVolume }}
+      whipFrames={VIDEO.whipFrames}
+    />
+  </AbsoluteFill>
 );
 
 const Outro: React.FC = () => (
@@ -100,6 +118,8 @@ const RvjScenePreview: React.FC<{ id: RvjSceneId }> = ({ id }) => {
   const Scene = RVJ_SCENE_COMPONENTS[id];
   return (
     <AbsoluteFill>
+      {/* The matching slice of the voiceover, to check sync scene by scene */}
+      <Audio src={staticFile(RVJ_VOICE.file)} trimBefore={rvjTimeline.sceneStart(id)} volume={RVJ_VOICE.volume} />
       <Scene />
       <Captions chunks={rvjTimeline.sceneCaptions(id)} />
       <Watermark />
@@ -135,7 +155,7 @@ export const RemotionRoot: React.FC = () => (
         />
       ))}
     </Folder>
-    <Composition id="RonaldoVsJesus" component={RonaldoVsJesusBranded} durationInFrames={brandedDuration(RVJ_TOTAL_FRAMES, VIDEO.fps)} {...comp} />
+    <Composition id="RonaldoVsJesus" component={RonaldoVsJesusBranded} durationInFrames={brandedDuration(RVJ_TOTAL_FRAMES, VIDEO.fps, RVJ_END.seconds)} {...comp} />
     <Folder name="Rvj-Scenes">
       {RVJ_SCENES.map(({ id }, i) => (
         <Composition

@@ -1,4 +1,4 @@
-// Scene 7 — The timing (2:20–2:50).
+// Scene 7 — The timing (1:54–2:21). Beats follow the voiceover.
 // Split screen: generic #10 shirt + "FAREWELL" (left), #7 shirt + phone whose
 // "New post" notification lights up (right). Two calendars slam in showing
 // the SAME circled day. A spotlight sits on the #10 side, then swings to the
@@ -16,20 +16,20 @@ import { TextSlam } from "../../components/TextSlam";
 import { useTheme } from "../../lib/theme-context";
 import { rvjFrames } from "../timeline";
 
-const NOTIFY = 62; // "He promised the truth" (2.0 s)
-const CALENDARS = 140; // "exact same day" (4.6 s)
-const SPOT = 204; // "Messi said goodbye" (6.8 s)
-const FAREWELL = 210;
-const CAL_OUT = 372;
-const COINCIDENCE = 384; // (12.8 s)
-const POWER = 428; // "steal the spotlight" (14.2 s)
-const SWING = 432;
-const SLAMS_OUT = 520;
-const SPOT_OUT = 526; // "One legend chose his ending" (17.6 s)
-const NOT_DONE = 590; // "not done yet" (19.6 s)
-const SPLIT_OUT = 640;
-const POLL = 652; // "who's right?" (21.8 s)
-const TELL = 750; // "Tell us in the comments" (25.0 s)
+const NOTIFY = 64; // "He promised the truth"
+const CALENDARS = 152; // "exact same day"
+const SPOT = 186; // "Messi said goodbye"
+const FAREWELL = 204; // "goodbye"
+const CAL_OUT = 350;
+const COINCIDENCE = 358; // "Coincidence?"
+const POWER = 392; // "Or did Ronaldo just steal the spotlight…"
+const SWING = 430; // "steal the spotlight"
+const SLAMS_OUT = 496;
+const SPOT_OUT = 500; // "One legend chose his ending"
+const NOT_DONE = 584; // "not done yet"
+const SPLIT_OUT = 610;
+const POLL = 620; // "So, who's right?"
+const TELL = 708; // "Tell us in the comments"
 /** Frames from the end of the scene where we hard-cut to black. */
 export const RVJ_BLACK_TAIL = 15;
 

@@ -26,6 +26,9 @@ PRONOUNCE = {
     "500": "five hundred", "2,000": "two thousand", "23": "twenty three", "2018": "twenty eighteen", "2015": "twenty fifteen",
     "yepbit": "yep bit", "cwpc": "c w p c", "sec": "s e c", "dkm": "d k m", "menzgold": "mens gold",
     "cedis": "see this", "ghanaians": "ghana ions", "licence": "license",
+    # Ronaldo vs Jesus
+    "1,000": "one thousand", "21": "twenty one", "30": "thirty", "al-nassr": "al nasser", "benching": "bench in",
+    "goalscorer": "goal scorer", "messi": "messy", "warm-up": "warm up",
 }
 
 

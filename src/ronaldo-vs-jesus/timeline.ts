@@ -1,4 +1,6 @@
-// "Ronaldo vs Jesus": scene order and lengths (170 s total).
+// "Ronaldo vs Jesus": scene order and lengths, following the voiceover: each
+// scene starts 0.35 s before its first spoken word (exact frames at 30 fps), and
+// the video cuts to black just after "Tell us in the comments." (140.6 s).
 import { VIDEO } from "../config/video";
 import { createTimeline } from "../lib/timeline";
 import { RVJ_SCRIPT } from "./script";
@@ -6,13 +8,13 @@ import { RVJ_SCRIPT } from "./script";
 export type RvjSceneId = keyof typeof RVJ_SCRIPT;
 
 export const RVJ_SCENES: { id: RvjSceneId; seconds: number }[] = [
-  { id: "hook", seconds: 15 }, //   0:00–0:15
-  { id: "plan", seconds: 30 }, //   0:15–0:45
-  { id: "norway", seconds: 25 }, // 0:45–1:10
-  { id: "deal", seconds: 25 }, //   1:10–1:35
-  { id: "press", seconds: 25 }, //  1:35–2:00
-  { id: "twist", seconds: 20 }, //  2:00–2:20
-  { id: "timing", seconds: 30 }, // 2:20–2:50
+  { id: "hook", seconds: 305 / 30 }, //    0:00.0–0:10.2
+  { id: "plan", seconds: 624 / 30 }, //    0:10.2–0:31.0
+  { id: "norway", seconds: 570 / 30 }, //  0:31.0–0:50.0
+  { id: "deal", seconds: 544 / 30 }, //    0:50.0–1:08.1
+  { id: "press", seconds: 773 / 30 }, //   1:08.1–1:33.9
+  { id: "twist", seconds: 615 / 30 }, //   1:33.9–1:54.4
+  { id: "timing", seconds: 787 / 30 }, //  1:54.4–2:20.6
 ];
 
 export const rvjTimeline = createTimeline(RVJ_SCENES, RVJ_SCRIPT, VIDEO.fps);

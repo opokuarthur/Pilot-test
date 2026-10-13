@@ -1,4 +1,4 @@
-// Scene 6 — The twist (2:00–2:20).
+// Scene 6 — The twist (1:34–1:54). Beats follow the voiceover.
 // "PLOT TWIST". On "He apologized" the Ronaldo cutout (applauding) returns
 // briefly. On "punish him" the gavel slams: "PUNISH ME." / "NO REDUCTION".
 // Then "NOT RETIRING" and the goal counter: 979 → "21 TO GO".
@@ -14,15 +14,15 @@ import { useTheme } from "../../lib/theme-context";
 import { rvjPushFrames } from "../timeline";
 import { PhotoMoment } from "../photos";
 
-const ADMITS = 78; // "was wrong" (2.6 s)
-const PHOTO = 148; // "He apologized" (5.0 s)
-const PHOTO_OUT = 202;
-const GAVEL = 196;
-const SLAMS = [212, 266]; // "punish him" (7.0 s), "no reduction" (9.0 s)
+const ADMITS = 134; // "was wrong"
+const PHOTO = 162; // "He apologized"
+const PHOTO_OUT = 214;
+const GAVEL = 210;
+const SLAMS = [244, 270]; // lands on "punish him", then "no reduction"
 const GAVEL_OUT = 344;
-const NOT_RETIRING = 354; // (11.8 s)
-const GOALS = 392;
-const TO_GO = 510; // "21 goals away from 1,000" (17.0 s)
+const NOT_RETIRING = 366; // "not retiring"
+const GOALS = 410;
+const TO_GO = 544; // "21 goals away from 1,000"
 
 export const Scene6Twist: React.FC = () => {
   const frame = useCurrentFrame();

@@ -1,4 +1,4 @@
-// Scene 1 — Hook (0:00–0:15).
+// Scene 1 — Hook (0:00–0:10). Beats follow the voiceover.
 // Night runway: the private jet rolls and takes off on "private jet". A
 // generic "New post" notification slides in, "THE TRUTH" slams, then the
 // Ronaldo cutout slides in with "CRISTIANO RONALDO — CAPTAIN".
@@ -13,13 +13,13 @@ import { useTheme } from "../../lib/theme-context";
 import { rvjPushFrames } from "../timeline";
 import { PhotoMoment } from "../photos";
 
-const ROLL = 70;
-const LIFT = 168; // "private jet" (5.6 s)
-const GONE = 290;
-const NOTIFY = 292;
-const TRUTH = 322;
-const SWAP = 354; // notification + big slam leave
-const PHOTO = 360; // "he did." (11.6 s) → photo
+const ROLL = 40;
+const LIFT = 172; // "private jet"
+const GONE = 236;
+const NOTIFY = 200; // "and promised…"
+const TRUTH = 226; // "the truth"
+const SWAP = 246; // notification + big slam leave
+const PHOTO = 250; // "Last night, he did." → photo
 
 export const Scene1Hook: React.FC = () => {
   const frame = useCurrentFrame();

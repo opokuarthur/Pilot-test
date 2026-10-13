@@ -1,4 +1,4 @@
-// Scene 4 — The deal (1:10–1:35).
+// Scene 4 — The deal (0:50–1:08). Beats follow the voiceover.
 // A room with three chairs round a table. The agreement slides in and its 8
 // numbered points tick ✅ one by one up to "Eight points"; it's signed and
 // stamped APPROVED ("8 POINTS. SIGNED OFF."). Then the doc lifts away and
@@ -14,13 +14,13 @@ import { useTheme } from "../../lib/theme-context";
 import { rvjPushFrames } from "../timeline";
 import { MeetingRoom } from "../sets";
 
-const DOC = 116; // "At his next press conference" (4.0 s)
-const TICKS = [150, 196, 244, 290, 336, 380, 428, 474]; // last on "Eight points" (15.8 s)
-const SIGN = 486;
-const APPROVED = 510; // "Ronaldo approved it" (17.0 s)
-const SIGNED_OFF = 478;
-const DOC_OUT = 540;
-const HUG = 552; // "They even hugged" (18.6 s)
+const DOC = 96; // "At his next press conference"
+const TICKS = [130, 166, 200, 236, 270, 306, 342, 376]; // last on "Eight points"
+const SIGN = 398;
+const APPROVED = 420; // "Ronaldo approved it"
+const SIGNED_OFF = 378;
+const DOC_OUT = 436;
+const HUG = 447; // "They even hugged"
 
 const Hug: React.FC = () => {
   const frame = useCurrentFrame();
@@ -48,7 +48,7 @@ export const Scene4Deal: React.FC = () => {
       <MeetingRoom />
       <AbsoluteFill style={{ background: `radial-gradient(circle at 50% 40%, ${alpha(colors.gold, 0.12)} 0%, transparent 55%)` }} />
       <div style={{ position: "absolute", left: 0, right: 0, top: 200, display: "flex", justifyContent: "center" }}>
-        <TextSlam text="TWO DAYS LATER" at={6} exitAt={DOC - 6} fontSize={110} color={colors.gold} />
+        <TextSlam text="TWO DAYS LATER" at={8} exitAt={DOC - 6} fontSize={110} color={colors.gold} />
       </div>
       <div style={{ position: "absolute", left: 540 - 270, top: 450 }}>
         <AgreementDoc width={540} appearAt={DOC} exitAt={DOC_OUT} tickAt={TICKS} signAt={SIGN} approvedAt={APPROVED} rotate={-2} />

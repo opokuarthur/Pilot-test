@@ -1,4 +1,4 @@
-// Scene 5 — The press conference (1:35–2:00).
+// Scene 5 — The press conference (1:08–1:34). Beats follow the voiceover.
 // Podium with microphones and camera flashes (coach as a silhouette only, no
 // photo). The signed agreement hangs over the set and RIPS in half on
 // "promise number two, broken"; "PROMISE #2: BROKEN" slams. Then the chase:
@@ -14,19 +14,20 @@ import { useTheme } from "../../lib/theme-context";
 import { rvjPushFrames } from "../timeline";
 import { ChaseStrip, ChaseTimes } from "../sets";
 
-const DOC = 66; // "the opposite" (2.2 s)
-const RIP = 380; // "promise number two, broken" (12.6 s)
-const BROKEN = 394;
-const PRESS_OUT = 452;
+const DOC = 110; // "the opposite"
+const RIP = 448; // tears just before "broken"
+const BROKEN = 462; // "broken"
+const PRESS_OUT = 482;
+const AIRPORT = 676; // "to the airport"
 const CHASE: ChaseTimes = {
-  busIn: 456, // "arrived at the stadium" (15.4 s)
-  busStop: 500,
-  exitBus: 518, // "never trained" (17.4 s)
-  chase: 560, // "the coach and federation president" (18.8 s)
-  board: 648,
-  rollAt: 676,
-  liftAt: 712,
-  goneAt: 790,
+  busIn: 486, // "arrived at the stadium"
+  busStop: 528,
+  exitBus: 550, // "never trained"
+  chase: 606, // "the coach and federation president"
+  board: 680,
+  rollAt: 700, // "He got on the jet anyway."
+  liftAt: 738,
+  goneAt: 820,
 };
 
 export const Scene5Press: React.FC = () => {
@@ -54,7 +55,7 @@ export const Scene5Press: React.FC = () => {
         <TextSlam text="NEVER TRAINED" at={CHASE.exitBus + 6} exitAt={CHASE.chase + 30} fontSize={110} color={colors.gold} />
       </div>
       <div style={{ position: "absolute", left: 0, right: 0, top: 220, display: "flex", justifyContent: "center" }}>
-        <TextSlam text="TO THE AIRPORT" at={CHASE.chase + 40} exitAt={CHASE.rollAt - 4} fontSize={110} color={colors.cream} />
+        <TextSlam text="TO THE AIRPORT" at={AIRPORT} exitAt={CHASE.rollAt - 4} fontSize={110} color={colors.cream} />
       </div>
       <div style={{ position: "absolute", left: 0, right: 0, top: 220, display: "flex", justifyContent: "center" }}>
         <TextSlam text="WHEELS UP" at={CHASE.rollAt + 14} fontSize={120} color={colors.navy} plate={colors.gold} rotate={-2} />
